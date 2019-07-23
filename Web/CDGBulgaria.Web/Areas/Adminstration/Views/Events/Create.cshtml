@@ -1,0 +1,48 @@
+﻿
+@using CDGBulgaria.Web.InputModels
+@model CDGBulgaria.Web.InputModels.EventCreateInputModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>EventCreateInputModel</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-method="post" asp-area="Administration" asp-page="/Events/Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Name" class="control-label">@Model.Name</label>
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Venue" class="control-label">@Model.Venue</label>
+				<input asp-for="Venue" class="form-control" />
+				<span asp-validation-for="Venue" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Start" class="control-label">@Model.Start</label>
+				<input asp-for="Start" class="form-control" />
+				<span asp-validation-for="Start" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />Create
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

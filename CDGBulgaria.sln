@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{CA90B66C-5DDC-4585-9033-8AA01105DE3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Data.Models", "Data\CSGBulgaria.Data.Models\CDGBulgaria.Data.Models.csproj", "{0B132CEE-E3A4-4C77-BF30-916986AECEB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Data", "Data\CDGBulgaria.Data\CDGBulgaria.Data.csproj", "{6108DED7-E014-48BC-AB92-60142A55206D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{D9D5ECE7-6A76-41EA-A41C-73C6361E8C04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Web", "Web\CDGBulgaria.Web\CDGBulgaria.Web.csproj", "{CADB326A-3418-4280-AFE4-CF3035668D07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3679307C-7507-4847-9E40-A2214CB15BEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Services", "Services\CDGBulgaria.Services\CDGBulgaria.Services.csproj", "{F6680D60-550C-473C-9705-324649021790}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Web.ViewModels", "Web\CDGBulgaria.Web.ViewModels\CDGBulgaria.Web.ViewModels.csproj", "{9CA7AAA2-5AAE-4F5B-8CBA-C7E62A723E6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Web.InputModels", "Web\CDGBulgaria.Web.InputModels\CDGBulgaria.Web.InputModels.csproj", "{4C94F069-960D-448C-B127-FC3FAEAC1150}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Services.Models", "Services\CDGBulgaria.Services.Models\CDGBulgaria.Services.Models.csproj", "{97EA2F99-C447-4375-9DA0-4D1E3E4F036D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDGBulgaria.Services.Mapping", "Services\CDGBulgaria.Services.Mapping\CDGBulgaria.Services.Mapping.csproj", "{54E14176-2F55-4FA3-B21A-6E22E2664B8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B132CEE-E3A4-4C77-BF30-916986AECEB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B132CEE-E3A4-4C77-BF30-916986AECEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B132CEE-E3A4-4C77-BF30-916986AECEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B132CEE-E3A4-4C77-BF30-916986AECEB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6108DED7-E014-48BC-AB92-60142A55206D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6108DED7-E014-48BC-AB92-60142A55206D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6108DED7-E014-48BC-AB92-60142A55206D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6108DED7-E014-48BC-AB92-60142A55206D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CADB326A-3418-4280-AFE4-CF3035668D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CADB326A-3418-4280-AFE4-CF3035668D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CADB326A-3418-4280-AFE4-CF3035668D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CADB326A-3418-4280-AFE4-CF3035668D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6680D60-550C-473C-9705-324649021790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6680D60-550C-473C-9705-324649021790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6680D60-550C-473C-9705-324649021790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6680D60-550C-473C-9705-324649021790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA7AAA2-5AAE-4F5B-8CBA-C7E62A723E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA7AAA2-5AAE-4F5B-8CBA-C7E62A723E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA7AAA2-5AAE-4F5B-8CBA-C7E62A723E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA7AAA2-5AAE-4F5B-8CBA-C7E62A723E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C94F069-960D-448C-B127-FC3FAEAC1150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C94F069-960D-448C-B127-FC3FAEAC1150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C94F069-960D-448C-B127-FC3FAEAC1150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C94F069-960D-448C-B127-FC3FAEAC1150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97EA2F99-C447-4375-9DA0-4D1E3E4F036D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97EA2F99-C447-4375-9DA0-4D1E3E4F036D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97EA2F99-C447-4375-9DA0-4D1E3E4F036D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97EA2F99-C447-4375-9DA0-4D1E3E4F036D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54E14176-2F55-4FA3-B21A-6E22E2664B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54E14176-2F55-4FA3-B21A-6E22E2664B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54E14176-2F55-4FA3-B21A-6E22E2664B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54E14176-2F55-4FA3-B21A-6E22E2664B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B132CEE-E3A4-4C77-BF30-916986AECEB3} = {CA90B66C-5DDC-4585-9033-8AA01105DE3E}
+		{6108DED7-E014-48BC-AB92-60142A55206D} = {CA90B66C-5DDC-4585-9033-8AA01105DE3E}
+		{CADB326A-3418-4280-AFE4-CF3035668D07} = {D9D5ECE7-6A76-41EA-A41C-73C6361E8C04}
+		{F6680D60-550C-473C-9705-324649021790} = {3679307C-7507-4847-9E40-A2214CB15BEF}
+		{9CA7AAA2-5AAE-4F5B-8CBA-C7E62A723E6C} = {D9D5ECE7-6A76-41EA-A41C-73C6361E8C04}
+		{4C94F069-960D-448C-B127-FC3FAEAC1150} = {D9D5ECE7-6A76-41EA-A41C-73C6361E8C04}
+		{97EA2F99-C447-4375-9DA0-4D1E3E4F036D} = {3679307C-7507-4847-9E40-A2214CB15BEF}
+		{54E14176-2F55-4FA3-B21A-6E22E2664B8C} = {3679307C-7507-4847-9E40-A2214CB15BEF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {972665CA-3D6F-4E91-97C3-B4AFD6C51003}
+	EndGlobalSection
+EndGlobal

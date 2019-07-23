@@ -1,0 +1,22 @@
+﻿@{
+	ViewData["Title"] = "CDGBulgaria";
+}
+@if (!this.User.Identity.IsAuthenticated)
+{
+	<main class="mt-3">
+			<h3 class="text-info text-center"><a href="/Identity/Account/Login">Login</a> if you have an account.</h3>
+			<h3 class="text-info text-center"><a href="/Identity/Account/Register">Register</a> if you don't.</h3>	
+	</main>
+}
+else
+{
+	@if (this.User.IsInRole("Admin"))
+	{
+		<h1 class="text-center">Hello, Administrator @this.User.Identity.Name!</h1>
+	}
+	else
+	{
+		<h1 class="text-center">Hello, @this.User.Identity.Name!</h1>
+	}
+}
+
