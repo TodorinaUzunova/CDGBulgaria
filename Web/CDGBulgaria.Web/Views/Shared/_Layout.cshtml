@@ -37,7 +37,7 @@
 				<h1 class="text-center">CDGBulgaria - The Bulgarian Association</h1>
 			</div>
 		</div>
-			<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 			<div class="container">
 				<div class="navbar-collapse collapse d-flex justify-content-between">
 					<ul class="navbar-nav">
@@ -51,8 +51,8 @@
 									ABOUT US
 								</a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="/Home/About">What we do</a>								
-									<a class="dropdown-item" href="/Home/Help">Who we help</a>			
+									<a class="dropdown-item" href="/Home/About">What we do</a>
+									<a class="dropdown-item" href="/Home/Help">Who we help</a>
 								</div>
 							</div>
 						<li class="nav-item">
@@ -62,7 +62,32 @@
 								<span class="navbar-toggler-icon"></span>
 							</button>
 						</li>
-					
+						@if (!this.User.Identity.IsAuthenticated)
+						{
+							<li>
+								<div class="container">
+									<button type="button" class="btn btn-danger" onclick="MustBeLoggedInFunction()">Ask a Question</button>
+								</div>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link text-dark" href="/">All Questions</a>
+								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+										aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
+							</li>
+						}
+						else
+						{
+							<li class="nav-item">
+								<a class="nav-link text-dark" href="/">Ask a Question</a>
+								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+										aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
+							</li>
+						}
 						@if (this.User.Identity.IsAuthenticated)
 						{
 							<li class="nav-item">
@@ -75,21 +100,14 @@
 										Events
 									</a>
 
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="/Events/All">All Events</a>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										<a class="dropdown-item" href="/Events/All">All Events</a>
 										@if (this.User.IsInRole("Admin"))
 										{
-											<a class="dropdown-item" asp-area="Administration" asp-controller="Events" asp-action="Create" >Create Event</a>
+											<a class="dropdown-item" asp-area="Administration" asp-controller="Events" asp-action="Create">Create Event</a>
 										}
 									</div>
 								</div>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-dark" href="/">Questions</a>
-								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-										aria-expanded="false" aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
 							</li>
 							<li class="nav-item">
 								<div class="dropdown show">
@@ -111,7 +129,7 @@
 								</div>
 							</li>
 						}
-						</ul>					
+					</ul>
 					<ul class="navbar-nav">
 						@if (!this.User.Identity.IsAuthenticated)
 						{
@@ -151,6 +169,11 @@
 		</div>
 	</footer>
 
+	<script>
+		function MustBeLoggedInFunction() {
+			alert("You must be logged in to ask a question.");
+		}
+	</script>
 	<script src="~/lib/jquery/dist/jquery.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
 

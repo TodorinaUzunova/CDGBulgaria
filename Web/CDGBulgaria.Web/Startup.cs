@@ -89,7 +89,7 @@ namespace CDGBulgaria.Web
 			{
 				using (var context=serviceScope.ServiceProvider.GetRequiredService<CDGBulgariaDbContext>())
 				{
-					context.Database.EnsureCreated();
+					context.Database.Migrate();
 
 					if (!context.Roles.Any())
 					{
