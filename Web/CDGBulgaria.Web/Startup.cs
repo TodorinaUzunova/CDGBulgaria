@@ -16,7 +16,7 @@ using AspNetCoreTemplate.Services.Mapping;
 using CDGBulgaria.Web.InputModels;
 using System.Reflection;
 using CDGBulgaria.Services.Models;
-using CDGBulgaria.Web.ViewModels;
+using CDGBulgaria.Web.ViewModels.Event;
 
 namespace CDGBulgaria.Web
 {
@@ -65,8 +65,9 @@ namespace CDGBulgaria.Web
 				options.User.RequireUniqueEmail = true;
 			});
 
-			services.AddTransient<IEventService, EventService>();
+			services.AddTransient<IEventsService, EventsService>();
 			services.AddTransient<ICloudinaryService, CloudinaryService>();
+			services.AddTransient<IUsersService, UsersService>();
 
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
