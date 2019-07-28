@@ -33,6 +33,7 @@
     <Folder Include="Areas\Doctor\Data\" />
     <Folder Include="Areas\Doctor\Models\" />
     <Folder Include="Areas\Doctor\Views\" />
+    <Folder Include="Views\Deseases\" />
   </ItemGroup>
 
 
