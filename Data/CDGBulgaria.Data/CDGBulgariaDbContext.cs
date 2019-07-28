@@ -13,11 +13,13 @@ namespace CDGBulgaria.Data
 
 		public DbSet<Article> Articles { get; set; }
 
-		//public DbSet<Question> Questions { get; set; }
+		public DbSet<Question> Questions { get; set; }
 
-		//public DbSet<Reply> Replies{ get; set; }
+		public DbSet<Reply> Replies { get; set; }
 
 		public DbSet<Event> Events { get; set; }
+
+		public DbSet<CDGDesease> Deseases { get; set; }
 
 		public CDGBulgariaDbContext(DbContextOptions options)
 			:base(options)
