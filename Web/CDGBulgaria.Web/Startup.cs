@@ -17,6 +17,8 @@ using CDGBulgaria.Web.InputModels;
 using System.Reflection;
 using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.ViewModels.Event;
+using CDGBulgaria.Web.ViewModels.Question;
+using CDGBulgaria.Web.InputModels.Question;
 
 namespace CDGBulgaria.Web
 {
@@ -68,6 +70,7 @@ namespace CDGBulgaria.Web
 			services.AddTransient<IEventsService, EventsService>();
 			services.AddTransient<ICloudinaryService, CloudinaryService>();
 			services.AddTransient<IUsersService, UsersService>();
+			services.AddTransient<IQuestionsService, QuestionsService>();
 
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -81,6 +84,7 @@ namespace CDGBulgaria.Web
 					typeof(EventViewModel).GetTypeInfo().Assembly,
 						typeof(EventServiceModel).GetTypeInfo().Assembly
 				);
+			
 
 			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 			CultureInfo.DefaultThreadCurrentUICulture  = CultureInfo.InvariantCulture;
