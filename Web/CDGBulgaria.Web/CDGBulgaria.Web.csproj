@@ -33,10 +33,14 @@
     <Folder Include="Areas\Doctor\Data\" />
     <Folder Include="Areas\Doctor\Models\" />
     <Folder Include="Areas\Doctor\Views\" />
+    <Folder Include="Views\Articles\" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <Content Update="Areas\Administration\Views\Events\Create.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\Shared\_Layout.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

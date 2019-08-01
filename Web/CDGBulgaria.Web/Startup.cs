@@ -13,7 +13,7 @@ using CDGBulgaria.Services.Contracts;
 using System.Globalization;
 using CloudinaryDotNet;
 using AspNetCoreTemplate.Services.Mapping;
-using CDGBulgaria.Web.InputModels;
+using CDGBulgaria.Web.InputModels.Event;
 using System.Reflection;
 using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.ViewModels.Event;
@@ -69,7 +69,6 @@ namespace CDGBulgaria.Web
 
 			services.AddTransient<IEventsService, EventsService>();
 			services.AddTransient<ICloudinaryService, CloudinaryService>();
-			services.AddTransient<IUsersService, UsersService>();
 			services.AddTransient<IQuestionsService, QuestionsService>();
 
 
