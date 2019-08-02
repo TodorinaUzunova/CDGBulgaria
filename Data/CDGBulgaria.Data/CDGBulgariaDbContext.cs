@@ -21,6 +21,8 @@ namespace CDGBulgaria.Data
 
 		public DbSet<CDGDesease> Deseases { get; set; }
 
+		public DbSet<Fact> Facts { get; set; }
+
 		public CDGBulgariaDbContext(DbContextOptions options)
 			:base(options)
 		{
@@ -33,5 +35,14 @@ namespace CDGBulgaria.Data
 				
 			base.OnModelCreating(builder);
 		}
+
+		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		//{
+		//	optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS; Database = CDGBulgariaDB; Trusted_Connection = True;");
+
+		//	base.OnConfiguring(optionsBuilder);
+		//}
+
+		
 	}
 }
