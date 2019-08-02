@@ -15,7 +15,7 @@ namespace CDGBulgaria.Data
 
 		public DbSet<Question> Questions { get; set; }
 
-		public DbSet<Reply> Replies { get; set; }
+		public DbSet<Answer> Answers { get; set; }
 
 		public DbSet<Event> Events { get; set; }
 

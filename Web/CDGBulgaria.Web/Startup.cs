@@ -70,6 +70,7 @@ namespace CDGBulgaria.Web
 			services.AddTransient<IEventsService, EventsService>();
 			services.AddTransient<ICloudinaryService, CloudinaryService>();
 			services.AddTransient<IQuestionsService, QuestionsService>();
+			services.AddTransient<IArticlesService, ArticlesService>();
 
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
