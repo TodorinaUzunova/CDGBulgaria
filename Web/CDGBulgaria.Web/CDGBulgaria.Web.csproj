@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Answers\" />
     <Folder Include="Areas\Doctor\Controllers\" />
     <Folder Include="Areas\Doctor\Data\" />
     <Folder Include="Areas\Doctor\Models\" />
