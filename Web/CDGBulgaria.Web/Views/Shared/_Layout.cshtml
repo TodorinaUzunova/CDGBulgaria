@@ -128,12 +128,12 @@
 									   data-toggle="dropdown"
 									   aria-haspopup="true"
 									   aria-expanded="false">
-										Doctors
+										Answers
 									</a>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 										@if (this.User.IsInRole("Admin"))
 										{
-											<a class="dropdown-item" asp-area="Administration" asp-controller="Doctors" asp-action="Create">Create Doctor</a>
+											<a class="dropdown-item" asp-area="Administration" asp-controller="Doctors" asp-action="Create">Create Answer</a>
 										}
 									</div>
 									</div>
@@ -153,7 +153,7 @@
 										@*@if (this.User.IsInRole("Admin"))
 										{*@
 											<a class="dropdown-item" href="/Articles/Create ">Create Article</a>
-										@*}*@
+										}
 									</div>
 								</div>
 							</li>

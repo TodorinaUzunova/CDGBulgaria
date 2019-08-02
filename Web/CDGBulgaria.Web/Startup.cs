@@ -79,11 +79,9 @@ namespace CDGBulgaria.Web
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			AutoMapperConfig.RegisterMappings(
-				typeof(EventCreateInputModel).GetTypeInfo().Assembly,
-					typeof(EventViewModel).GetTypeInfo().Assembly,
-						typeof(EventServiceModel).GetTypeInfo().Assembly
-				);
+		AutoMapperConfig.RegisterMappings(
+		typeof(EventCreateInputModel).GetTypeInfo().Assembly,
+		typeof(EventViewModel).GetTypeInfo().Assembly,				typeof(EventServiceModel).GetTypeInfo().Assembly);
 			
 
 			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
