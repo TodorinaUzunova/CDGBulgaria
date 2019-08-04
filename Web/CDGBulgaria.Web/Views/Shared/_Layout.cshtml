@@ -33,8 +33,8 @@
 	<header>
 		<div class="jumbotron jumbotron-fluid">
 			<div class="container">
-				<h1 class="text-center">Welcome to</h1>
-				<h1 class="text-center">CDGBulgaria - The Bulgarian Association</h1>
+				<h1 class="text-center  text-info font-weight-bold">Welcome to</h1>
+				<h1 class="text-center text-info font-weight-bold">CDGBulgaria - The Bulgarian Association</h1>
 			</div>
 		</div>
 		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -43,7 +43,7 @@
 					<ul class="navbar-nav">
 						<li class="nav-item">
 							<div class="dropdown show">
-								<a class="nav-link active dropdown-toggle" href="#"
+								<a class="nav-link active dropdown-toggle  text-info" href="#"
 								   id="dropdownMenuLink"
 								   data-toggle="dropdown"
 								   aria-haspopup="true"
@@ -51,14 +51,14 @@
 									ABOUT US
 								</a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="/Home/About">What we do</a>
-									<a class="dropdown-item" href="/Home/Help">Who we help</a>
+									<a class="dropdown-item text-info" href="/Home/About">What we do</a>
+									<a class="dropdown-item text-info" href="/Home/Help">Who we help</a>
 								</div>
 							</div>
 						</li>
 						<li class="nav-item">
 							<div class="dropdown show">
-								<a class="nav-link active dropdown-toggle" href="#"
+								<a class="nav-link active dropdown-toggle text-info" href="#"
 								   id="dropdownMenuLink"
 								   data-toggle="dropdown"
 								   aria-haspopup="true"
@@ -66,14 +66,18 @@
 									CDG - DESEASES
 								</a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="/Deseases/About">What Is CDG-Desease?</a>
-									<a class="dropdown-item" href="/Deseases/Details">CDG-TYPES</a>
-									<a class="dropdown-item" href="/Deseases/Info">Facts About CDGDeseases</a>
-
+									<a class="dropdown-item text-info" href="/Deseases/About">What Is CDG-Desease?</a>
+									<a class="dropdown-item text-info" href="/Deseases/Details">CDG-TYPES</a>
 								</div>
 							</div>
 						</li>
-
+						<li class="nav-item">
+							<a class="nav-link text-dark text-info" href="/Facts/All">Important Facts</a>
+							<button class="navbar-toggler alert-danger" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+									aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+						</li>
 						@if (!this.User.Identity.IsAuthenticated)
 						{
 							<li>
@@ -83,7 +87,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link text-dark" href="/Questions/All">All Questions</a>
+								<a class="nav-link text-dark text-info" href="/Questions/All">All Questions</a>
 								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 										aria-expanded="false" aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
@@ -93,7 +97,7 @@
 						else
 						{
 							<li class="nav-item">
-								<a class="nav-link text-dark" href="/Questions/Create">Ask a Question</a>
+								<a class="nav-link text-dark text-info" href="/Questions/Create">Ask a Question</a>
 								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 										aria-expanded="false" aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
@@ -104,7 +108,7 @@
 						{
 							<li class="nav-item">
 								<div class="dropdown show">
-									<a class="nav-link active dropdown-toggle" href="#"
+									<a class="nav-link active dropdown-toggle text-info" href="#"
 									   id="dropdownMenuLink"
 									   data-toggle="dropdown"
 									   aria-haspopup="true"
@@ -113,34 +117,54 @@
 									</a>
 
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										<a class="dropdown-item" href="/Events/All">All Events</a>
+										<a class="dropdown-item text-info" href="/Events/All">All Events</a>
+
 										@if (this.User.IsInRole("Admin"))
 										{
-											<a class="dropdown-item" asp-area="Administration" asp-controller="Events" asp-action="Create">Create Event</a>
+											<a class="dropdown-item text-info" asp-area="Administration" asp-controller="Events" asp-action="Create">Create Event</a>
 										}
+									</div>
+								</div>
+							</li>
+						}
+
+
+						@if (this.User.IsInRole("Admin"))
+						{
+							<li class="nav-item">
+								<div class="dropdown show">
+									<a class="nav-link active dropdown-toggle text-info" href="#"
+									   id="dropdownMenuLink"
+									   data-toggle="dropdown"
+									   aria-haspopup="true"
+									   aria-expanded="false">
+										Facts
+									</a>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										<a class="dropdown-item text-info" asp-area="Administration" asp-controller="Facts" asp-action="Create">Create Fact</a>
 									</div>
 								</div>
 							</li>
 							<li class="nav-item">
 								<div class="dropdown show">
-									<a class="nav-link active dropdown-toggle" href="#"
+									<a class="nav-link active dropdown-toggle text-info" href="#"
 									   id="dropdownMenuLink"
 									   data-toggle="dropdown"
 									   aria-haspopup="true"
 									   aria-expanded="false">
-										Answers
+									  Answers
 									</a>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										@if (this.User.IsInRole("Admin"))
-										{
-											<a class="dropdown-item" asp-area="Administration" asp-controller="Answers" asp-action="Create">Create Answer</a>
-										}
+										<a class="dropdown-item text-info" asp-area="Administration" asp-controller="Answers" asp-action="Create">Create Answer</a>
 									</div>
-									</div>
-                                  </li>
+								</div>
+							</li>
+						}
+						@if (this.User.Identity.IsAuthenticated)
+						{
 							<li class="nav-item">
 								<div class="dropdown show">
-									<a class="nav-link active dropdown-toggle" href="#"
+									<a class="nav-link active dropdown-toggle text-info" href="#"
 									   id="dropdownMenuLink"
 									   data-toggle="dropdown"
 									   aria-haspopup="true"
@@ -149,30 +173,27 @@
 									</a>
 
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										<a class="dropdown-item" href="/Articles/All">All Articles</a>
-										@*@if (this.User.IsInRole("Admin"))
-										{*@
-											<a class="dropdown-item" href="/Articles/Create ">Create Article</a>
-										}
+										<a class="dropdown-item text-info" href="/Articles/All">All Articles</a>
+										<a class="dropdown-item text-info" href="/Articles/Create ">Create Article</a>
 									</div>
 								</div>
 							</li>
-							}
-						</ul>
+						}
+					</ul>
 					<ul class="navbar-nav">
 						@if (!this.User.Identity.IsAuthenticated)
 						{
 							<li class="nav-item">
-								<a class="nav-link text-dark" href="/Identity/Account/Login">Login</a>
+								<a class="nav-link text-dark text-info" href="/Identity/Account/Login">Login</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark" href="/Identity/Account/Register">Register</a>
+								<a class="nav-link text-dark text-info" href="/Identity/Account/Register">Register</a>
 							</li>
 						}
 						else
 						{
-							<li class="nav-item">
-								<a class="nav-link text-dark" href="/Identity/Account/Logout">Logout</a>
+							<li class="nav-item text-info">
+								<a class="nav-link text-dark text-info" href="/Identity/Account/Logout">Logout</a>
 							</li>
 						}
 					</ul>

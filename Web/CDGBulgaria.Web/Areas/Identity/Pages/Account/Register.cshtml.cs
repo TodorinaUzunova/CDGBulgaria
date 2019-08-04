@@ -23,9 +23,9 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
 
 
         public RegisterModel(
-            UserManager<CDGUser> userManager,
             SignInManager<CDGUser> signInManager,
-			RoleManager<IdentityRole>roleManager
+			UserManager<CDGUser> userManager,
+		    RoleManager<IdentityRole> roleManager
 		)
         {
 		     
@@ -59,6 +59,8 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
 			[EmailAddress]
 			[Display(Name = "Email")]
 			public string Email { get; set; }
+
+			public string FullName  { get; set; }
 		}
 
         public async Task OnGetAsync(string returnUrl = null)

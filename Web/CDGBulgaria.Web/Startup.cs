@@ -19,6 +19,7 @@ using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.ViewModels.Event;
 using CDGBulgaria.Web.ViewModels.Question;
 using CDGBulgaria.Web.InputModels.Question;
+using Microsoft.AspNetCore.Http;
 
 namespace CDGBulgaria.Web
 {
@@ -54,6 +55,8 @@ namespace CDGBulgaria.Web
 
 			services.AddSingleton(cloudinaryUtility);
 
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 			services.Configure<IdentityOptions>(options =>
 			{
 				// Default Password settings.
@@ -71,7 +74,8 @@ namespace CDGBulgaria.Web
 			services.AddTransient<ICloudinaryService, CloudinaryService>();
 			services.AddTransient<IQuestionsService, QuestionsService>();
 			services.AddTransient<IArticlesService, ArticlesService>();
-
+			services.AddTransient<IFactsService, FactsService>();
+			services.AddTransient<IAnswersService, AnswersService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
@@ -81,7 +85,7 @@ namespace CDGBulgaria.Web
 		{
 		AutoMapperConfig.RegisterMappings(
 		typeof(EventCreateInputModel).GetTypeInfo().Assembly,
-		typeof(EventViewModel).GetTypeInfo().Assembly,				typeof(EventServiceModel).GetTypeInfo().Assembly);
+		typeof(EventViewModel).GetTypeInfo().Assembly,typeof(EventServiceModel).GetTypeInfo().Assembly);
 			
 
 			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
