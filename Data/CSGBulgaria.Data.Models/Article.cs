@@ -18,6 +18,7 @@ namespace CDGBulgaria.Data.Models
 		public string Title { get; set; }
 
 		[Required]
+		[MaxLength(800)]
 		public string Content { get; set; }
 		 
 		[Required]
