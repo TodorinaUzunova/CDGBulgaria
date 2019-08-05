@@ -9,7 +9,7 @@ namespace CDGBulgaria.Data.Models
 	{
 		public Question()
 		{
-		this.Id =  Guid.NewGuid().ToString();
+		       this.Id =  Guid.NewGuid().ToString();
 	     }
 
 		[Required]
@@ -25,9 +25,6 @@ namespace CDGBulgaria.Data.Models
 		public CDGUser Author { get; set; }
 
 		public ICollection<Answer> Answers { get; set; }
-
-
-
 	}
 }
 
