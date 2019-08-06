@@ -5,10 +5,10 @@
 }
 
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-4 text-center">
 			<form class="mx-auto width w-50" method="post">
 				<h4 class="text-info text-center">Create a new account.</h4>
-				<hr />
+				<hr class="hr-2 bg-primary w-50">
 				<div asp-validation-summary="All" class="text-danger"></div>
 				<div class="form-group">
 					<label asp-for="Input.Username" class="text-info">Username</label>
@@ -35,6 +35,7 @@
 					<input type="email" class="form-control" id="email" placeholder="FullName..." asp-for="Input.FullName">
 					<span asp-validation-for="Input.Email" class="text-danger"></span>
 				</div>
+				<hr class="hr-2 bg-primary w-50">
 				<button type="submit" class="btn btn-primary">Register</button>
 			</form>
 		</div>

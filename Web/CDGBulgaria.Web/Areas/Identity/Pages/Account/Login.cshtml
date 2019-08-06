@@ -6,8 +6,9 @@
 }
 
 <h2 class="text-center text-info">Login</h2>
+<hr class="hr-2 bg-primary w-50">
 <form id="account" class="mx-auto width w-50" method="post">
-		<div class="form-group">
+	<div class="form-group">
 		<label asp-for="Input.Username" class="text-info">Username</label>
 		<input type="text" class="form-control" id="username" placeholder="Username..." asp-for="Input.Username">
 		<span asp-validation-for="Input.Username" class="text-danger"></span>
@@ -17,6 +18,7 @@
 		<input type="password" class="form-control" id="password" placeholder="Password..." asp-for="Input.Password">
 		<span asp-validation-for="Input.Password" class="text-info"></span>
 	</div>
+	<hr class="hr-2 bg-primary w-50">
 	<div class="button-holder d-flex justify-content-center">
 		<button type="submit" class="btn btn-primary">Login</button>
 	</div>
