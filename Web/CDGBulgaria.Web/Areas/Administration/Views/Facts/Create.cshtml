@@ -1,0 +1,38 @@
+﻿@using CDGBulgaria.Web.InputModels
+@model CDGBulgaria.Web.InputModels.Fact.FactCreateInputModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-info bg-primary">Create Fact</h2>
+
+<hr class="hr-2 bg-primary mt-4">
+<div class="row">
+	<div class="col-md-4">
+		<form asp-method="post" asp-area="Administration" asp-page="/Facts/Create" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Content" class="control-label"></label>
+				<input asp-for="Content" class="form-control" />
+				<span asp-validation-for="Content" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="PdfFile" class="control-label"></label>
+				<input asp-for="PdfFile" class="form-control" />
+				<span asp-validation-for="PdfFile" class="text-danger"></span>
+			</div>
+			<hr class="hr-2 bg-primary mt-4">
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+

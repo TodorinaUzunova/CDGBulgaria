@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CDGBulgaria.Web.ViewModels.Article.ArticleViewModel>
+
+@{
+	ViewData["Title"] = "All";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center text-info">CDG Articles</h1>
+<hr class="hr-2 bg-primary w-50">
+
+@foreach (var article in Model)
+{
+<div class="text">
+	<h3 class="display-4 text-center text-info">@article.Title</h3>
+	<hr class=" text-center w-50 text-info">
+	<p>
+		@article.Content
+	</p>
+
+	<h6>Created by:@article.CreatedOn</h6>
+
+	<p class="text-info">@article.AuthorFullName</p>
+	<div id="navigation-holder" class="mt-4 d-flex justify-content-around">
+		@if (this.User.IsInRole("Admin"))
+		{
+			<a href="/Administration/Articles/Edit/@article.Id" class="btn btn-primary text-white font-weight-bold">Edit</a>
+			<a href="/Administration/Articles/Delete/@article.Id" class="btn btn-primary text-white font-weight-bold">Delete</a>
+		}
+	</div>
+
+</div>
+}
