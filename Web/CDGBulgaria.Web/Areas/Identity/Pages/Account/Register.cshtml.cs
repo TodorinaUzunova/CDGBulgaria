@@ -60,6 +60,8 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
 			[Display(Name = "Email")]
 			public string Email { get; set; }
 
+			[Required]
+			[Display(Name = "FullName")]
 			public string FullName  { get; set; }
 		}
 
