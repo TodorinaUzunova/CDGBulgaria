@@ -12,14 +12,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CDGBulgaria.Web.Controllers
 {
-    public class ArticlesController : Controller
-    {
+	public class ArticlesController : Controller
+	{
 		private readonly IArticlesService articlesService;
-		
+
 
 		public ArticlesController(IArticlesService articleService)
 		{
-			
+
 			this.articlesService = articleService;
 		}
 
@@ -32,7 +32,7 @@ namespace CDGBulgaria.Web.Controllers
 		[HttpPost(Name = "Create")]
 		[Authorize]
 		public async Task<IActionResult> Create(ArticleCreateInputModel model)
-			{
+		{
 			if (!this.ModelState.IsValid)
 			{
 				return this.View(model);
@@ -49,14 +49,14 @@ namespace CDGBulgaria.Web.Controllers
 		public async Task<IActionResult> All()
 		{
 			var articles = this.articlesService.GetAllArticles()
-	.Select(article => new ArticleViewModel
-				{
-		            Id=article.Id,
-					Content = article.Content,
-					CreatedOn = article.CreatedOn,
-					AuthorFullName = article.Author.FullName,
-				})
-				.ToList();
+						  .Select(article => new ArticleViewModel
+						  {
+							  Id = article.Id,
+							  Content = article.Content,
+							  CreatedOn = article.CreatedOn,
+							  AuthorFullName = article.Author.FullName,
+						  })
+					   .ToList();
 
 			return this.View(articles);
 		}

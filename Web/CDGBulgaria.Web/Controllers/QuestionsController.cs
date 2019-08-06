@@ -24,15 +24,7 @@ namespace CDGBulgaria.Web.Controllers
 
 		public async Task<IActionResult> Create()
 		{
-
-
-			//return this.View();
-
-			//QuestionServiceModel serviceModel = model.To<QuestionServiceModel>();
-
-	//	await this.questionService.Create(serviceModel);
-			return this.View();
-
+			return this.View();	
 		}
 
 		[HttpPost(Name ="Create")]
