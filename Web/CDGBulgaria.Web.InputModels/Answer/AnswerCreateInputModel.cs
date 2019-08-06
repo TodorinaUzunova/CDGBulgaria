@@ -25,7 +25,7 @@ namespace CDGBulgaria.Web.InputModels.Answer
 		{
 			configuration.CreateMap<AnswerCreateInputModel, AnswerServiceModel>()
 				.ForMember(destination => destination.Question, 
-				           opts => opts.MapFrom(origin => new QuestionServiceModel() {Content=origin.QuestionContent.ToString()}));	    
+				           opts => opts.MapFrom(origin => new QuestionServiceModel() {Content=origin.QuestionContent}));	    
 		}
 	}
 }
