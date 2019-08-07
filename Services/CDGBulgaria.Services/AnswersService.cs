@@ -30,8 +30,9 @@ namespace CDGBulgaria.Services
 			Answer answer = new Answer
 			{
 				Id = answerServiceModel.Id,
+				Content=answerServiceModel.Content,
 				AuthorId = authorId,
-				QuestionId = answerServiceModel.QuestionId
+				QuestionId = answerServiceModel.QuestionId,
 			};
 
 			await this.context.Answers.AddAsync(answer);

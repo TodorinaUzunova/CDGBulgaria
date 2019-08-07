@@ -19,6 +19,7 @@ namespace CDGBulgaria.Services
 		private readonly CDGBulgariaDbContext context;
 		private readonly IHttpContextAccessor contextAccessor;
 
+
 		public QuestionsService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
 		{
 			this.context = context;
@@ -33,7 +34,7 @@ namespace CDGBulgaria.Services
 			{
 				Content = questionServiceModel.Content,
 				AuthorId= authorId,
-				CreatedOn = DateTime.UtcNow,
+				CreatedOn = questionServiceModel.CreatedOn,
 			};
 
 			
@@ -44,6 +45,7 @@ namespace CDGBulgaria.Services
 
 		public IQueryable<QuestionServiceModel> GetAllQuestions()
 		{
+			
 			var  allQuestions=this.context.Questions.To<QuestionServiceModel>();
 
 			return allQuestions;
