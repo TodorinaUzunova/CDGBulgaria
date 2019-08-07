@@ -7,15 +7,13 @@ using CDGBulgaria.Services.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CDGBulgaria.Services
+namespace CDGBulgaria.Services 
 {
-	public class ArticlesService: IArticlesService
+	public class ArticlesService : IArticlesService
 	{
 		private readonly CDGBulgariaDbContext context;
 		private readonly IHttpContextAccessor contextAccessor;
