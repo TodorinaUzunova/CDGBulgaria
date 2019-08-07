@@ -20,6 +20,7 @@ using CDGBulgaria.Web.ViewModels.Event;
 using CDGBulgaria.Web.ViewModels.Question;
 using CDGBulgaria.Web.InputModels.Question;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.UI;
 
 namespace CDGBulgaria.Web
 {
@@ -83,9 +84,10 @@ namespace CDGBulgaria.Web
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-		AutoMapperConfig.RegisterMappings(
-		typeof(EventCreateInputModel).GetTypeInfo().Assembly,
-		typeof(EventViewModel).GetTypeInfo().Assembly,typeof(EventServiceModel).GetTypeInfo().Assembly);
+		   AutoMapperConfig.RegisterMappings(
+		     typeof(EventCreateInputModel).GetTypeInfo().Assembly,
+		         typeof(EventViewModel).GetTypeInfo().Assembly,
+			          typeof(EventServiceModel).GetTypeInfo().Assembly);
 			
 
 			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;

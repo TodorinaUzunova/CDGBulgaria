@@ -1,60 +1,68 @@
-﻿@using CDGBulgaria.Web.ViewModels.Question
+﻿@using CDGBulgaria.Services.Models
+@using CDGBulgaria.Web.Controllers
+@using CDGBulgaria.Services
+@using CDGBulgaria.Data
+@using CDGBulgaria.Services.Contracts
+@using CDGBulgaria.Web.ViewModels.Question
 @model CDGBulgaria.Web.InputModels.Answer.AnswerCreateInputModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
 	ViewData["Title"] = "Create";
 	Layout = "~/Views/Shared/_Layout.cshtml";
+	//QuestionsService q = new QuestionsService();
+	//   ViewData["questions"] = 
+
+	//QuestionsController qq = new QuestionsController();
+	//await qq.All();
+	//   IQueryable<QuestionServiceModel>l=q.GetAllQuestions();
+
 
 }
 
 <h2 class="text-info">Create Answer</h2>
 
 <hr class="hr-2 bg-primary mt-4">
-		<form asp-action="Create">
-			<div asp-validation-summary="All" class="text-danger"></div>
-			<div class="form-group mx-auto w-45">
-				<div class="d-flex justify-content-center">
-					<label asp-for="QuestionContent" class="text-primary h5">Question</label>
-				</div>
-				<select class="form-control text-primary" id="question" asp-for="QuestionContent">
-					<option selected disabled>--- Select Question ---</option>
-					@foreach (var question in (IEnumerable<AnswerCreateQuestionViewModel>)this.ViewData["questions"])
+<form asp-action="Create">
+	<div asp-validation-summary="All" class="text-danger"></div>
+	<div class="form-group mx-auto w-45">
+		<div class="d-flex justify-content-center">
+			<label asp-for="QuestionContent" class="text-primary h5">Question</label>
+		</div>
+		<select class="form-control text-primary" id="question" asp-for="QuestionContent">
+			<option selected disabled>--- Select Question ---</option>
+			@*@foreach (var question in (IEnumerable<A>))
+				{
+					@if (question.Id == Model.QuestionId && question.Content == Model.QuestionContent)
 					{
-						@if (question.Id == Model.QuestionId && question.Content == Model.QuestionContent)
-						{
-							<option value="@question.Content" selected>@question.Content</option>
-						}
-						else
-						{
-							<option value="@question.Content">@question.Content</option>
-						}
+						<option value="@question.Content" selected>@question.Content</option>
 					}
-				</select>
-			</div>
-			<div class="form-group">
-				<label asp-for="QuestionId" class="control-label"></label>
-				<input asp-for="QuestionId" class="form-control" />
-				<span asp-validation-for="QuestionId" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Content" class="control-label"></label>
-				<input asp-for="Content" class="form-control" />
-				<span asp-validation-for="Content" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<input type="hidden" asp-for="AuthorId" class="form-control" />
-				<span asp-validation-for="AuthorId" class="text-danger"></span>
-			</div>
+					else
+					{
+						<option value="@question.Content">@question.Content</option>
+					}
+				}*@
+		</select>
+	</div>
+	<div class="form-group">
+		<label asp-for="QuestionId" class="control-label"></label>
+		<input asp-for="QuestionId" class="form-control" />
+		<span asp-validation-for="QuestionId" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Content" class="control-label"></label>
+		<input asp-for="Content" class="form-control" />
+		<span asp-validation-for="Content" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<input type="hidden" asp-for="AuthorId" class="form-control" />
+		<span asp-validation-for="AuthorId" class="text-danger"></span>
+	</div>
 
-			<hr class="hr-2 bg-primary mt-4">
-			<div class="form-group">
-				<input type="submit" value="Create" class="btn btn-primary" />
-			</div>
-		</form>
+	<hr class="hr-2 bg-primary mt-4">
+	<div class="form-group">
+		<input type="submit" value="Create" class="btn btn-primary" />
+	</div>
+</form>
 
-
-<div>
-	<a asp-action="Index">Back to List</a>
-</div>
 

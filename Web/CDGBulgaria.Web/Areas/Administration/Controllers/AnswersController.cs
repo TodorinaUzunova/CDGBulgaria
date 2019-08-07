@@ -37,6 +37,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 			AnswerServiceModel answerServiceModel = new AnswerServiceModel
 			{
 				Id = answerCreateInputModel.AuthorId,
+				Content=answerCreateInputModel.Content,
 				AuthorId = answerCreateInputModel.AuthorId,
 				QuestionId = answerCreateInputModel.QuestionId
 			};

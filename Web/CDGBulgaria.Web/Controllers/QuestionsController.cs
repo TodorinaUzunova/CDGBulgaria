@@ -15,11 +15,12 @@ namespace CDGBulgaria.Web.Controllers
 {
     public class QuestionsController : Controller
     {
-		private readonly IQuestionsService questionService;
+		private readonly IQuestionsService questionsService;
+		
 
-		public QuestionsController(IQuestionsService questionService)
+		public QuestionsController(IQuestionsService questionsService)
 		{
-			this.questionService = questionService;
+			this.questionsService = questionsService;
 		}
 
 		public async Task<IActionResult> Create()
@@ -40,7 +41,7 @@ namespace CDGBulgaria.Web.Controllers
 			}
 
 			QuestionServiceModel serviceModel = model.To<QuestionServiceModel>();
-			await this.questionService.Create(serviceModel);
+			await this.questionsService.Create(serviceModel);
 
 			return this.Redirect("/");
 		}
@@ -48,7 +49,7 @@ namespace CDGBulgaria.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> All()
 		{
-			var questions = this.questionService.GetAllQuestions()
+			var questions = this.questionsService.GetAllQuestions()
 				.Select(question => new QuestionViewModel
 				{
 					Content=question.Content,
@@ -56,6 +57,8 @@ namespace CDGBulgaria.Web.Controllers
 					AuthorUserName=question.Author.UserName
 				})
 				.ToList();
+
+			this.ViewData["questions"] = questions;
 
 			return this.View(questions);
 		}
