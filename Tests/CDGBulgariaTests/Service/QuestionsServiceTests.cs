@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,12 +34,12 @@ namespace CDGBulgariaTests.Service
 				new Question {
 					Content="Is this is a new kind of rare desease?",
 					AuthorId="cvthsg12lkmm",
-					CreatedOn=DateTime.UtcNow
+					CreatedOn=DateTime.Parse("12/03/2019 15:14")
 				  },
 				new Question {
 					Content="What happens, when the children have this desease?",
 					AuthorId="cvthsg12lkmm3456",
-					CreatedOn=DateTime.UtcNow
+					CreatedOn=DateTime.Parse("12/06/2019 14:00")
 				  },
 			};
 		}
@@ -60,6 +61,7 @@ namespace CDGBulgariaTests.Service
 
 			await SeedData(context);
 
+			this.contextAccessor = new HttpContextAccessor();
 			this.questionsService = new QuestionsService(context, contextAccessor);
 
 			List<QuestionServiceModel> actualResults = await this.questionsService.GetAllQuestions().ToListAsync();
@@ -86,6 +88,7 @@ namespace CDGBulgariaTests.Service
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
+			this.contextAccessor = new HttpContextAccessor();
 			this.questionsService = new QuestionsService(context, contextAccessor);
 
 			List<QuestionServiceModel> actualResults = await this.questionsService.GetAllQuestions().ToListAsync();
@@ -101,16 +104,17 @@ namespace CDGBulgariaTests.Service
 			string errorMessagePrefix = "QuestionsService Method CreateQuestion() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
-			this.contextAccessor = new HttpContextAccessor();
 
+			this.contextAccessor = new HttpContextAccessor();
 			this.questionsService = new QuestionsService(context, contextAccessor);
 
 		 QuestionServiceModel questio= new QuestionServiceModel()
 			{
 				Content = "Are there really found medicines for this desease?",
 				AuthorId="sdwrefghjk12345",
+				CreatedOn= DateTime.Parse("10/07/2019 10:30"),
 			};
-
+			
 			bool actualResult = await this.questionsService.Create(questio);
 
 			Assert.True(actualResult, errorMessagePrefix);
