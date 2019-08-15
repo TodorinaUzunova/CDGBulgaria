@@ -41,7 +41,7 @@ namespace CDGBulgaria.Web.Controllers
 
 			await this.articlesService.CreateArticle(serviceModel);
 
-			return this.Redirect("/");
+			return this.Redirect("/Articles/All");
 		}
 
 
@@ -52,6 +52,7 @@ namespace CDGBulgaria.Web.Controllers
 						  .Select(article => new ArticleViewModel
 						  {
 							  Id = article.Id,
+							  Title=article.Title,
 							  Content = article.Content,
 							  CreatedOn = article.CreatedOn,
 							  AuthorFullName = article.Author.FullName,
