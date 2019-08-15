@@ -12,7 +12,7 @@
 <hr class="hr-2 bg-primary w-50">
 <form class="mx-auto width w-50" asp-method="post" asp-action="/Questions/Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
+        <div class="form-group text-info">
 				<label asp-for="Content" class="control-label">Content</label>
 				<input asp-for="Content" class="form-control" placeholder="Content..." />
 				<span asp-validation-for="Content" class="text-danger"></span>
@@ -21,9 +21,9 @@
 				<input type="hidden" asp-for="AuthorId" class="form-control" />
 				<span asp-validation-for="AuthorId" class="text-danger"></span>
 			</div>
-			<hr class="hr-2 bg-primary w-50">
+			<hr class="hr-2 bg-primary">
 			<div class="form-group text-center">
-				<input type="submit" value="Create" class="btn btn-primary" />
+				<input type="submit" value="Submit" class="btn btn-primary" />
 			</div>
 </form>
 

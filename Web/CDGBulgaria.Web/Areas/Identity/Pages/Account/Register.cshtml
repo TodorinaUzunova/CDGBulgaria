@@ -33,8 +33,10 @@
 		<input type="email" class="form-control" id="email" placeholder="FullName..." asp-for="Input.FullName">
 		<span asp-validation-for="Input.Email" class="text-danger"></span>
 	</div>
-	<hr class="hr-2 bg-primary w-50">
-	<button type="submit" class="btn btn-primary text-center">Register</button>
+	<hr class="hr-2 bg-primary">
+	<div class="button-holder d-flex justify-content-center">
+		<button type="submit" class="btn btn-primary">Register</button>
+	</div>
 </form>
 		@section Scripts {
 	<partial name="_ValidationScriptsPartial" />

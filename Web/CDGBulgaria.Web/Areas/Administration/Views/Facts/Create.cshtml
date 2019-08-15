@@ -13,12 +13,12 @@
 
 <form class="mx-auto width w-50" asp-method="post" asp-area="Administration" asp-page="/Facts/Create" enctype="multipart/form-data">
 	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-	<div class="form-group">
+	<div class="form-group text-info">
 		<label asp-for="Content" class="control-label"></label>
 		<input asp-for="Content" class="form-control" placeholder="Content..." />
 		<span asp-validation-for="Content" class="text-danger"></span>
 	</div>
-	<div class="form-group">
+	<div class="form-group text-info">
 		<label asp-for="PdfFile" class="control-label"></label>
 		<input asp-for="PdfFile" class="form-control" />
 		<span asp-validation-for="PdfFile" class="text-danger"></span>

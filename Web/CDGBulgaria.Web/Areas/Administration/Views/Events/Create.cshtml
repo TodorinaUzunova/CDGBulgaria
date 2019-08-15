@@ -13,22 +13,22 @@
 <hr class="hr-2 bg-primary mt-4 w-50 text-center">
 		<form class="mx-auto width w-50" asp-method="post" asp-area="Administration" asp-page="/Events/Create" enctype="multipart/form-data">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div class="form-group">
+			<div class="form-group text-info">
 				<label asp-for="Name" class="control-label">Name</label>
 				<input asp-for="Name" class="form-control" placeholder="Name..." />
 				<span asp-validation-for="Name" class="text-danger"></span>
 			</div>
-			<div class="form-group">
+			<div class="form-group text-info">
 				<label asp-for="Venue" class="control-label">Venue</label>
 				<input asp-for="Venue" class="form-control" placeholder="Venue.."/>
 				<span asp-validation-for="Venue" class="text-danger"></span>
 			</div>
-			<div class="form-group">
+			<div class="form-group text-info">
 				<label asp-for="Start" class="control-label">Start</label>
 				<input asp-for="Start" class="form-control" id="start" placeholder="StartDate..." />
 				<span asp-validation-for="Start" class="text-danger"></span>
 			</div>
-			<div class="form-group">
+			<div class="form-group text-info">
 				<label asp-for="MoreInfo" class="control-label">MoreInfo</label>
 				<input asp-for="MoreInfo" class="form-control"/>
 				<span asp-validation-for="MoreInfo" class="text-danger"></span>

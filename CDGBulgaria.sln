@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgaria.Services.Mappin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{01BAD32A-836F-4325-8725-931C89C72A3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CDGBulgariaTests", "Tests\CDGBulgariaTests\CDGBulgariaTests.csproj", "{E8575BEE-FF4F-4523-B8D3-EFA9B58AFA65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CDGBulgariaTests", "Tests\CDGBulgariaTests\CDGBulgariaTests.csproj", "{E8575BEE-FF4F-4523-B8D3-EFA9B58AFA65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
