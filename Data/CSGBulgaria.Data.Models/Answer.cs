@@ -21,8 +21,9 @@ namespace CDGBulgaria.Data.Models
 		public string AuthorId { get; set; }
 		public CDGUser Author { get; set; }
 
-		[Required]
+	
 		public string QuestionId { get; set; }
+		[Required]
 		public Question Question { get; set; }
 
 	}

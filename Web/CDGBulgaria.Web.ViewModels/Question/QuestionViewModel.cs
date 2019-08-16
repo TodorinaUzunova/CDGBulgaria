@@ -9,9 +9,12 @@ namespace CDGBulgaria.Web.ViewModels.Question
 {
 	public class QuestionViewModel:IMapFrom<QuestionServiceModel>, IHaveCustomMappings
 	{
+
+		public string Id { get; set; }
+
 		public string Content { get; set; }
 
-		public DateTime CreatedOn{ get; set; }
+		public DateTime? CreatedOn{ get; set; }
 
 		public string AuthorUserName { get; set; }
 

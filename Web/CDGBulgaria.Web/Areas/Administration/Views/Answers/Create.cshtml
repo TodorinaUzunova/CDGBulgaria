@@ -10,17 +10,10 @@
 @{
 	ViewData["Title"] = "Create";
 	Layout = "~/Views/Shared/_Layout.cshtml";
-	//QuestionsService q = new QuestionsService();
-	//   ViewData["questions"] = 
-
-	//QuestionsController qq = new QuestionsController();
-	//await qq.All();
-	//   IQueryable<QuestionServiceModel>l=q.GetAllQuestions();
-
-
+	
 }
 
-<h2 class="text-info">Create Answer</h2>
+<h2 class="text-info text-center">Create Answer</h2>
 
 <hr class="hr-2 bg-primary mt-4 text-center w-50">
 <form class="mx-auto width w-50" asp-action="Create">
@@ -31,29 +24,35 @@
 		</div>
 		<select class="form-control text-primary" id="questionContent" asp-for="QuestionContent">
 			<option selected disabled>--- Select Question ---</option>
-			@foreach (var option in Model.QuestionContent)
-			{
-				<option>@option</option>
-			}
-			@*@foreach (var question in (IEnumerable<AnswerCreateQuestionViewModel>this.ViewData["questions"]))
+			@foreach (var question in (IEnumerable<AnswerCreateQuestionViewModel>)this.ViewData["questions"])
 		{
-			@if (question.Id == Model.QuestionId && question.Content == Model.QuestionContent)
+			@*@if (question.Id == Model.QuestionId && question.Content == Model.QuestionContent)
 			{
 				<option value="@question.Content" selected>@question.Content</option>
 			}
 			else
-			{
+			{*@
 				<option value="@question.Content">@question.Content</option>
-			}
-		}*@
+				<option value="@question.Id">@question.Id</option>
+		
+		}
 		</select>
 	</div>
-	<div class="form-group">
-		<label asp-for="QuestionId" class="control-label"></label>
-		<input asp-for="QuestionId" class="form-control" />
-		<span asp-validation-for="QuestionId" class="text-danger"></span>
+	<div class="form-group mx-auto w-45">
+		<div class="d-flex justify-content-center">
+			<label asp-for="QuestionId" class="text-primary h5">QuestionId</label>
+		</div>
+		<select class="form-control text-primary" id="questionContent" asp-for="QuestionId">
+			<option selected disabled>--- Select QuestionId ---</option>
+			@foreach (var question in (IEnumerable<AnswerCreateQuestionViewModel>)this.ViewData["questions"])
+			{
+				<option value="@question.Content">@question.Content</option>
+				<option value="@question.Id">@question.Id</option>
+
+			}
+		</select>
 	</div>
-	<div class="form-group">
+	<div class="form-group text-info">
 		<label asp-for="Content" class="control-label"></label>
 		<input asp-for="Content" class="form-control" placeholder="Content..."/>
 		<span asp-validation-for="Content" class="text-danger"></span>

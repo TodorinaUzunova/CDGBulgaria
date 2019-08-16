@@ -20,11 +20,11 @@ namespace CDGBulgaria.Web.InputModels.Event
 		[Display(Name = "Venue")]
 		public string Venue { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Start is required!")]
 		[Display(Name = "Start")]
 		public DateTime Start { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "MoreInfo is required!")]
 		[Display(Name = "MoreInfo")]
 		public IFormFile MoreInfo { get; set; }
 

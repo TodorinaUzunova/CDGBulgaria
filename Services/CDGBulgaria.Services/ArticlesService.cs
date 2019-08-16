@@ -18,6 +18,15 @@ namespace CDGBulgaria.Services
 		private readonly CDGBulgariaDbContext context;
 		private readonly IHttpContextAccessor contextAccessor;
 
+
+		private const string AtoZAuthorNameOrderCriteria = "authorname-a-to-z";
+
+		private const string ZtoAAuthorNameOrderCriteria = "authorname-z-to-a";
+
+		private const string OldestToNewestDateOrderCriteria = "date-oldest-to-newest";
+
+		private const string NewestToOldestArticleOrderCriteria = "date-newest-to-oldest";
+
 		public ArticlesService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
 		{
 			this.context = context;
@@ -92,6 +101,8 @@ namespace CDGBulgaria.Services
 
 			return result > 0;
 		}
+		
+		
 	}
 }
 

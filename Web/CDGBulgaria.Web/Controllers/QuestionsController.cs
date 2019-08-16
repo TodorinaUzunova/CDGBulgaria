@@ -39,7 +39,7 @@ namespace CDGBulgaria.Web.Controllers
 				return this.View(model);
 			
 			}
-
+			model.CreatedOn = DateTime.UtcNow;
 			QuestionServiceModel serviceModel = model.To<QuestionServiceModel>();
 			await this.questionsService.Create(serviceModel);
 

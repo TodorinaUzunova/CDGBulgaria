@@ -14,6 +14,7 @@ namespace CDGBulgaria.Web.InputModels.Question
 		[Display(Name ="Content")]
 		public string Content { get; set; }
 
+		public DateTime? CreatedOn { get; set; }
 	
 		public string AuthorId { get; set; }
 	}

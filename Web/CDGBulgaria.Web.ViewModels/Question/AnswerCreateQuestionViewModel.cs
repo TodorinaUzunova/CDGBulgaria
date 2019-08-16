@@ -8,7 +8,7 @@ namespace CDGBulgaria.Web.ViewModels.Question
 {
 	public class AnswerCreateQuestionViewModel:IMapFrom<QuestionServiceModel>
 	{
-		public string Id { get; set; }
+		public string Id { get; set; } 
 
 		public string  Content  { get; set; }
 	}

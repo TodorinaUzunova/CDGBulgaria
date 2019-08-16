@@ -9,7 +9,7 @@ namespace CDGBulgaria.Services.Contracts
 {
 	public interface IAnswersService
 	{
-		IQueryable<AnswerServiceModel> GetAllAnswersForAQuestion(string questionId);
+		IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string questionId);
 
 		Task<bool> CreateAnswer(AnswerServiceModel serviceModel);
 	}

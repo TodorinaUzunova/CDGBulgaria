@@ -14,11 +14,12 @@ namespace CDGBulgaria.Web.InputModels.Answer
 		[MaxLength(800)]
 		public string Content { get; set; }
 
-		[Required]
-		public string QuestionId { get; set; }
 
 		[Required]
 		public string QuestionContent { get; set; }
+
+		[Required]
+		public string QuestionId { get; set; }
 
 
 		public string AuthorId { get; set; }

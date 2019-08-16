@@ -3,28 +3,31 @@
 @{
 	ViewData["Title"] = "All";
 	Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
 <h1 class="text-center text-info">CDG Articles</h1>
 <hr class="hr-2 bg-primary w-50">
-
+	
 @foreach (var article in Model)
 {
-<div class="text">
-	<h4 class="text-center text-danger">@article.Title</h4>
-	<p>
-		@article.Content
-	</p>
+	<div class="article text">
+		<h4 class="text-center text-danger">@article.Title</h4>
+		<p>
+			@article.Content
+		</p>
 
-	<h6 class="text-info">Created by: @article.AuthorFullName</h6>
+		<h6 class="text-info">Created by: @article.AuthorFullName</h6>
 
-	<p>@article.CreatedOn</p>
-	<div id="navigation-holder" class="mt-4 d-flex justify-content-around">
-		@if (this.User.IsInRole("Admin"))
-		{
-			<a href="/Administration/Articles/Edit/@article.Id" class="btn btn-primary text-white font-weight-bold">Edit</a>
-			<a href="/Administration/Articles/Delete/@article.Id" class="btn btn-primary text-white font-weight-bold">Delete</a>
-		}
+		<p>@article.CreatedOn</p>
+		<div id="navigation-holder" class="mt-4 d-flex justify-content-around">
+			@if (this.User.IsInRole("Admin"))
+			{
+				<a href="/Administration/Articles/Edit/@article.Id" class="btn btn-primary text-white font-weight-bold">Edit</a>
+				<a href="/Administration/Articles/Delete/@article.Id" class="btn btn-primary text-white font-weight-bold">Delete</a>
+			}
+		</div>
 	</div>
-</div>
 }
+

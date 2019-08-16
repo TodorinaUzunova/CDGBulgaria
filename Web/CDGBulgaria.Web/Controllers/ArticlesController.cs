@@ -23,6 +23,7 @@ namespace CDGBulgaria.Web.Controllers
 			this.articlesService = articleService;
 		}
 
+		[Authorize]
 		public async Task<IActionResult> Create()
 		{
 
@@ -44,15 +45,13 @@ namespace CDGBulgaria.Web.Controllers
 			return this.Redirect("/Articles/All");
 		}
 
-
-		[HttpGet]
 		public async Task<IActionResult> All()
 		{
-			var articles = this.articlesService.GetAllArticles()
+			List<ArticleViewModel> articles = this.articlesService.GetAllArticles()
 						  .Select(article => new ArticleViewModel
 						  {
 							  Id = article.Id,
-							  Title=article.Title,
+							  Title = article.Title,
 							  Content = article.Content,
 							  CreatedOn = article.CreatedOn,
 							  AuthorFullName = article.Author.FullName,
@@ -61,5 +60,7 @@ namespace CDGBulgaria.Web.Controllers
 
 			return this.View(articles);
 		}
+
+
 	}
 }

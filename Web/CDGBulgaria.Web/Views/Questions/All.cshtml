@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<CDGBulgaria.Web.ViewModels.Question.QuestionViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewData["Title"] = "All";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "All";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -18,18 +19,19 @@
 	<tbody>
 		@foreach (var question in Model)
 		{
-			
-		<tr class="row text-left font-weight-bold">
-			<td class="col-md-6 h6">@question.Content</td>
-			<td class="col-md-2 h7 text-center">@question.AuthorUserName</td>
-			<td class="col-md-2 h7 text-center">@question.CreatedOn.ToString("dd/MM/yyyy HH:mm")</td>
-			<td class="col-md-2 h7">
-				<div class="container">
-					<button type="button" class="btn btn-danger text-center" asp-action="/Answers/All">Answers</button>
-				</div>
-			</td>
-		</tr>
-			}
-		</tbody>
+
+			<tr class="row text-left font-weight-bold">
+				<td class="col-md-6 h6">@question.Content</td>
+				<td class="col-md-2 h7 text-center">@question.AuthorUserName</td>
+				<td class="col-md-2 h7 text-center">@question.CreatedOn?.ToString("dd/MM/yyyy HH:mm")</td>
+				<td class="col-md-2 h7">
+					<div class="container">
+						<a href="/Answers/All/@question.Id" class="btn btn-primary text-white font-weight-bold">Answers</a>
+					</div>
+
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
 <hr class="hr-2 bg-primary mx-auto">

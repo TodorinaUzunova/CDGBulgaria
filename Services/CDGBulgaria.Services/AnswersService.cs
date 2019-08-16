@@ -27,12 +27,15 @@ namespace CDGBulgaria.Services
 		{
 			string authorId = contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
+			Question questionFromDb = context.Questions.SingleOrDefault(question=>question.Content==answerServiceModel.Question.Content); 
+
 			Answer answer = new Answer
 			{
 				Id = answerServiceModel.Id,
 				Content=answerServiceModel.Content,
 				AuthorId = authorId,
-				QuestionId = answerServiceModel.QuestionId,
+				QuestionId=questionFromDb.Id,
+				Question = questionFromDb,
 			};
 
 			await this.context.Answers.AddAsync(answer);
@@ -40,9 +43,9 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
-		public IQueryable<AnswerServiceModel> GetAllAnswersForAQuestion(string questionId)
+		public IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
 		{
-		     var answersForAQuestion = this.context.Answers.Where(a=>a.QuestionId==questionId)
+		     var answersForAQuestion = this.context.Answers.Where(a=>a.QuestionId==id)
 				.To<AnswerServiceModel>();
 
 			return answersForAQuestion;
