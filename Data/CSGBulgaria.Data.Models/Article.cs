@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace CDGBulgaria.Data.Models
@@ -15,12 +16,15 @@ namespace CDGBulgaria.Data.Models
 		public string Id { get; set; }
 
 		[Required]
+		[MaxLength(50)]
 		public string Title { get; set; }
 
 		[Required]
-		[MaxLength(800)]
 		public string Content { get; set; }
-		 
+
+		[NotMapped]
+		public string Summary => this.Content.Substring(0, 100) +"...";
+
 		[Required]
 		public DateTime CreatedOn { get; set; }
 

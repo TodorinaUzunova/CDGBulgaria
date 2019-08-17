@@ -34,12 +34,12 @@ namespace CDGBulgariaTests.Service
 				new Question {
 					Content="Is this is a new kind of rare desease?",
 					AuthorId="cvthsg12lkmm",
-					CreatedOn=DateTime.Parse("12/03/2019 15:14")
+					CreatedOn=DateTime.UtcNow
 				  },
 				new Question {
 					Content="What happens, when the children have this desease?",
 					AuthorId="cvthsg12lkmm3456",
-					CreatedOn=DateTime.Parse("12/06/2019 14:00")
+					CreatedOn=DateTime.UtcNow
 				  },
 			};
 		}

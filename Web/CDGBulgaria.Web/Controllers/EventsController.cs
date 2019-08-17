@@ -6,6 +6,7 @@ using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Web.ViewModels.Event;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CDGBulgaria.Web.Controllers
 {
@@ -22,7 +23,7 @@ namespace CDGBulgaria.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> All()
 		{
-			var events = this.eventService.GetAllEvents()
+			var events = await this.eventService.GetAllEvents()
 				.Select(ev => new EventViewModel
 				{
 					Name = ev.Name,
@@ -30,7 +31,7 @@ namespace CDGBulgaria.Web.Controllers
 					Venue = ev.Venue,
 					MoreInfo = ev.MoreInfo
 				})
-				.ToList();
+				.ToListAsync();
 
 			return this.View(events);
 		}

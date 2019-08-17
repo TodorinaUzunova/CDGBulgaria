@@ -10,6 +10,7 @@ using CDGBulgaria.Web.InputModels.Question;
 using CDGBulgaria.Web.ViewModels.Question;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CDGBulgaria.Web.Controllers
 {
@@ -43,22 +44,22 @@ namespace CDGBulgaria.Web.Controllers
 			QuestionServiceModel serviceModel = model.To<QuestionServiceModel>();
 			await this.questionsService.Create(serviceModel);
 
-			return this.Redirect("/");
+			return this.Redirect("/Questions/All");
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> All()
 		{
-			var questions = this.questionsService.GetAllQuestions()
+			var questions = await this.questionsService.GetAllQuestions()
 				.Select(question => new QuestionViewModel
 				{
 					Content=question.Content,
 					CreatedOn=question.CreatedOn,
 					AuthorUserName=question.Author.UserName
 				})
-				.ToList();
+				.ToListAsync();
 
-			this.ViewData["questions"] = questions;
+			//this.ViewData["questions"] = questions;
 
 			return this.View(questions);
 		}

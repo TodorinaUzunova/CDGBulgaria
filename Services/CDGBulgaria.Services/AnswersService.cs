@@ -43,7 +43,7 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
-		public IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
+		public  IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
 		{
 		     var answersForAQuestion = this.context.Answers.Where(a=>a.QuestionId==id)
 				.To<AnswerServiceModel>();

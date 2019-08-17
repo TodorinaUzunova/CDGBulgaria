@@ -4,6 +4,7 @@ using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.Areas.Adminstration.Controllers;
 using CDGBulgaria.Web.InputModels.Article;
 using CDGBulgaria.Web.InputModels.Articles;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		}
 
 		[HttpGet(Name ="Edit")]
+		[Authorize]
 		public async Task<IActionResult> Edit(string id)
 		{
 			ArticleEditInputModel articleEditInputModel = (await this.articlesService.GetArticleById(id)).To<ArticleEditInputModel>();
@@ -35,8 +37,13 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		}
 
 		[HttpPost(Name = "Edit")]
+		[Authorize]
 		public async Task<IActionResult> Edit(string id, ArticleEditInputModel articleEditInputModel)
 		{
+			if (id==null)
+			{
+				return NotFound();
+			}
 			if (!this.ModelState.IsValid)
 			{
 				return this.View(articleEditInputModel);
@@ -45,12 +52,16 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		ArticleServiceModel articleServiceModel = articleEditInputModel.To<ArticleServiceModel>();
 
 			await this.articlesService.Edit(id, articleServiceModel);
-			return this.Redirect("/");
+			return this.Redirect("/Articles/All");
 		}
 
 		[HttpGet(Name = "Delete")]
 		public async Task<IActionResult> Delete(string id)
 		{
+			if (id==null)
+			{
+				return NotFound();
+			}
 			ArticleDeleteViewModel articleDeleteViewModel = (await this.articlesService.GetArticleById(id)).To<ArticleDeleteViewModel>();
 
 			if (articleDeleteViewModel==null)
@@ -67,7 +78,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		public async Task<IActionResult> DeleteConfirm(string id)
 		{
 			await this.articlesService.Delete(id);
-			return this.Redirect("/");
+			return this.Redirect("/Articles/All");
 		}
 
 	}

@@ -9,6 +9,7 @@ using CDGBulgaria.Web.InputModels.Articles;
 using CDGBulgaria.Web.ViewModels.Article;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CDGBulgaria.Web.Controllers
 {
@@ -47,18 +48,31 @@ namespace CDGBulgaria.Web.Controllers
 
 		public async Task<IActionResult> All()
 		{
-			List<ArticleViewModel> articles = this.articlesService.GetAllArticles()
+			List<ArticleViewModel> articles = await this.articlesService.GetAllArticles()
 						  .Select(article => new ArticleViewModel
 						  {
 							  Id = article.Id,
 							  Title = article.Title,
-							  Content = article.Content,
+							  Summary = article.Content.Substring(0,250) + "...",
 							  CreatedOn = article.CreatedOn,
 							  AuthorFullName = article.Author.FullName,
 						  })
-					   .ToList();
+					   .ToListAsync();
 
 			return this.View(articles);
+		}
+
+		[HttpGet(Name ="Details")]
+		[Authorize]
+		public async Task<IActionResult> Details(string id)
+		{
+			if (id==null)
+			{
+				return NotFound();
+			}
+			ArticleDetailsViewModel articleViewModel = (await this.articlesService.GetArticleById(id)).To<ArticleDetailsViewModel>();
+
+			return this.View(articleViewModel);
 		}
 
 

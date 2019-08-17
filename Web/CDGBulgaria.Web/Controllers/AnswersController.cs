@@ -7,6 +7,7 @@ using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Mapping;
 using CDGBulgaria.Web.ViewModels.Answer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CDGBulgaria.Web.Controllers
 {
@@ -20,11 +21,14 @@ namespace CDGBulgaria.Web.Controllers
 		}
 
 	
-		[Route("/Answers/All/{id}")]
+		[HttpGet(Name ="All")]
         public async Task<IActionResult> All(string id)
         {
-			
-			var allAnswers = this.answersService.GetAllAnswersForAQuestionById(id).ToList();
+			if (id==null)
+			{
+				return NotFound();
+			}
+			var allAnswers = await this.answersService.GetAllAnswersForAQuestionById(id).ToListAsync();
 
 			foreach (var answer in allAnswers)
 			{

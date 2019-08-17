@@ -23,3 +23,4 @@ namespace CDGBulgaria.Services.Contracts
 		Task<bool> Delete(string id);
 	}
 }
+ 

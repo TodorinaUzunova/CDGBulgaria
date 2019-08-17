@@ -8,6 +8,7 @@ using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.Areas.Adminstration.Controllers;
 using CDGBulgaria.Web.InputModels.Answer;
 using CDGBulgaria.Web.ViewModels.Question;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		public async Task<IActionResult> Create()
 		{
 
@@ -40,6 +42,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 		
 		[HttpPost(Name = "Create")]
+		[Authorize]
 		public async Task<IActionResult> Create(AnswerCreateInputModel answerCreateInputModel)
 		{
 			if (!this.ModelState.IsValid)

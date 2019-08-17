@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CDGBulgaria.Web.ViewModels.Article.ArticleViewModel>
+﻿@model List<CDGBulgaria.Web.ViewModels.Article.ArticleViewModel>
 
 @{
 	ViewData["Title"] = "All";
@@ -6,28 +6,45 @@
 
 
 }
-
-<h1 class="text-center text-info">CDG Articles</h1>
-<hr class="hr-2 bg-primary w-50">
-	
-@foreach (var article in Model)
-{
-	<div class="article text">
-		<h4 class="text-center text-danger">@article.Title</h4>
-		<p>
-			@article.Content
-		</p>
-
-		<h6 class="text-info">Created by: @article.AuthorFullName</h6>
-
-		<p>@article.CreatedOn</p>
-		<div id="navigation-holder" class="mt-4 d-flex justify-content-around">
-			@if (this.User.IsInRole("Admin"))
+<h3 class="text-primary text-center">All Articles</h3>
+	<div class="articles" display="block">
+		@for (int i = 0; i < Model.Count; i += 4)
+		{
+		<div class="articles d-flex my-5">
+			@for (int j = i; j < i + 4; j++)
 			{
-				<a href="/Administration/Articles/Edit/@article.Id" class="btn btn-primary text-white font-weight-bold">Edit</a>
-				<a href="/Administration/Articles/Delete/@article.Id" class="btn btn-primary text-white font-weight-bold">Delete</a>
+				if (j < Model.Count)
+				{
+
+			<div class="article col-md-3">
+
+				<hr class="hr-2 bg-primary">
+				<h4 class="text-center text-danger">@Model[j].Title</h4>
+				<p>
+					@Model[j].Summary
+				</p>
+
+				<h6 class="text-info">Created by: @Model[j].AuthorFullName</h6>
+
+				<p>@Model[j].CreatedOn</p>
+				<div id="navigation-holder" class="mt-4 d-flex justify-content-around">
+
+					<a href="/Articles/Details/@Model[j].Id" class="btn btn-primary text-white font-weight-bold">Details</a>
+				</div>
+				<hr class="hr-2 bg-primary">
+			</div>
+				
+
+				}
+				else
+				{
+					<div class="article col-md-2 empty">
+					</div>
+				}
 			}
 		</div>
+		}
 	</div>
-}
+
+
 
