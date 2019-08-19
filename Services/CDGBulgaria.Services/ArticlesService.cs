@@ -19,13 +19,7 @@ namespace CDGBulgaria.Services
 		private readonly IHttpContextAccessor contextAccessor;
 
 
-		//private const string AtoZAuthorNameOrderCriteria = "authorname-a-to-z";
-
-		//private const string ZtoAAuthorNameOrderCriteria = "authorname-z-to-a";
-
-		//private const string OldestToNewestDateOrderCriteria = "date-oldest-to-newest";
-
-		//private const string NewestToOldestArticleOrderCriteria = "date-newest-to-oldest";
+		
 
 		public ArticlesService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
 		{
@@ -52,12 +46,13 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
-		public IQueryable<ArticleServiceModel> GetAllArticles()
+		public IQueryable<ArticleServiceModel> GetAllArticles(string criteria = null)
 		{
 			var allArticles = this.context.Articles.To<ArticleServiceModel>();
 
 			return allArticles;
 		}
+
 
 		public async Task<ArticleServiceModel> GetArticleById(string id)
 		{
@@ -101,7 +96,7 @@ namespace CDGBulgaria.Services
 
 			return result > 0;
 		}
-		
+
 		
 	}
 }

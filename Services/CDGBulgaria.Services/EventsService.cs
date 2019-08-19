@@ -12,11 +12,11 @@ namespace CDGBulgaria.Services
 {
 	public class EventsService : IEventsService
 	{
-		public readonly CDGBulgariaDbContext dbContext;
+		public readonly CDGBulgariaDbContext context;
 
-		public EventsService(CDGBulgariaDbContext dbContext)
+		public EventsService(CDGBulgariaDbContext context)
 		{
-			this.dbContext = dbContext;
+			this.context = context;
 		}
 
 		public async Task<bool> Create(EventServiceModel eventServiceModel)
@@ -30,15 +30,15 @@ namespace CDGBulgaria.Services
 
 			};
 
-		     await dbContext.Events.AddAsync(eve);
-			 int result = await dbContext.SaveChangesAsync();
+		     await context.Events.AddAsync(eve);
+			 int result = await context.SaveChangesAsync();
 
 			return result >0;
 		}
 
 		public IQueryable<EventServiceModel> GetAllEvents()
 		{
-			var allEvents = this.dbContext.Events
+			var allEvents = this.context.Events
 				 .Select(ev => new EventServiceModel
 				 {
 					 Name=ev.Name,

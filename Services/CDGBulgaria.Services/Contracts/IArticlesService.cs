@@ -9,9 +9,8 @@ namespace CDGBulgaria.Services.Contracts
 {
 	public interface IArticlesService
    {
-		IQueryable<ArticleServiceModel> GetAllArticles();
-
-		//IQueryable<ArticleServiceModel> GetAllArticles(string criteria=null);
+		
+	    IQueryable<ArticleServiceModel> GetAllArticles(string criteria=null);
 
 
 		Task<bool> CreateArticle(ArticleServiceModel serviceModel);
@@ -21,6 +20,8 @@ namespace CDGBulgaria.Services.Contracts
 		Task<bool> Edit(string id, ArticleServiceModel serviceModel);
 
 		Task<bool> Delete(string id);
+
+
 	}
 }
  

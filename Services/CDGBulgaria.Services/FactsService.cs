@@ -12,11 +12,11 @@ namespace CDGBulgaria.Services
 {
 	public class FactsService : IFactsService
 	{
-		private readonly CDGBulgariaDbContext dbContext;
+		private readonly CDGBulgariaDbContext context;
 
-		public FactsService(CDGBulgariaDbContext dbContext)
+		public FactsService(CDGBulgariaDbContext context)
 		{
-			this.dbContext = dbContext;
+			this.context = context;
 		}
 
 		public async Task<bool> Create(FactServiceModel factServiceModel)
@@ -29,15 +29,15 @@ namespace CDGBulgaria.Services
 
 			};
 
-			await dbContext.Facts.AddAsync(factus);
-			int result = await dbContext.SaveChangesAsync();
+			await context.Facts.AddAsync(factus);
+			int result = await context.SaveChangesAsync();
 
 			return result > 0;
 		}
 
 		public IQueryable<FactServiceModel> GetAllFacts()
 		{
-			var allFacts=this.dbContext.Facts
+			var allFacts=this.context.Facts
 				.Select(fact=>new FactServiceModel
 				{
 					Id=fact.Id,
