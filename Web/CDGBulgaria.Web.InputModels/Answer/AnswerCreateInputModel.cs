@@ -10,15 +10,15 @@ namespace CDGBulgaria.Web.InputModels.Answer
 {
 	public class AnswerCreateInputModel:IMapTo<AnswerServiceModel>, IHaveCustomMappings
 	{
-		[Required]
+		[Required(ErrorMessage = "Content is required!")]
 		[MaxLength(800)]
 		public string Content { get; set; }
 
 
-		[Required]
+		[Required(ErrorMessage = "QuestionContent is required!")]
 		public string QuestionContent { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "QuestionId is required!")]
 		public string QuestionId { get; set; }
 
 

@@ -22,6 +22,7 @@ namespace CDGBulgaria.Web.InputModels.Articles
 		public string AuthorId { get; set; }
 
 		[Required]
+		[Display(Name ="FullName")]
 		public string AuthorFullName { get; set; }
 
 		public void CreateMappings(IProfileExpression configuration)

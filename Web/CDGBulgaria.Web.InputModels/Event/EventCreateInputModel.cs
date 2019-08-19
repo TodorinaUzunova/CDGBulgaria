@@ -10,7 +10,7 @@ using System.Text;
 
 namespace CDGBulgaria.Web.InputModels.Event
 {
-	public class EventCreateInputModel:IMapTo<EventServiceModel>//IHaveCustomMappings
+	public class EventCreateInputModel:IMapTo<EventServiceModel>
 	{
 		[Required(ErrorMessage = "Name is required!")]
 		[Display(Name = "Username")]
@@ -28,11 +28,5 @@ namespace CDGBulgaria.Web.InputModels.Event
 		[Display(Name = "MoreInfo")]
 		public IFormFile MoreInfo { get; set; }
 
-		//public void CreateMappings(IProfileExpression configuration)
-		//{
-		//	configuration.CreateMap<ProductCreateInputModel, ProductServiceModel>()
-		//		.ForMember(destination => destination.ProductType,
-		//		opts => opts.MapFrom(origin => new ProductTypeServiceModel { Name = origin.ProductType });	
-		//}
 	}
 }

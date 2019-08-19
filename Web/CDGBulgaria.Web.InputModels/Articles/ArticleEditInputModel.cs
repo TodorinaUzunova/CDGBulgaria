@@ -21,7 +21,7 @@ namespace CDGBulgaria.Web.InputModels.Articles
 		[Required]
 		public string AuthorId { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "FullName is required!")]
 		public string AuthorFullName { get; set; }
 
 		public void CreateMappings(IProfileExpression configuration)
