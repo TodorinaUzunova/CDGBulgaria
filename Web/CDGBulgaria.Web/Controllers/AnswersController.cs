@@ -20,8 +20,8 @@ namespace CDGBulgaria.Web.Controllers
 			this.answersService = answersService;
 		}
 
-	
-		[HttpGet(Name ="All")]
+	    [HttpGet]
+		[Route("/Answers/All/{id}")]
         public async Task<IActionResult> All(string id)
         {
 			if (id==null)

@@ -77,6 +77,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		[Route("/Administration/Articles/Delete/{id}")]
 		public async Task<IActionResult> DeleteConfirm(string id)
 		{
+
 			await this.articlesService.Delete(id);
 			return this.Redirect("/Articles/All");
 		}

@@ -77,6 +77,7 @@ namespace CDGBulgaria.Web
 			services.AddTransient<IArticlesService, ArticlesService>();
 			services.AddTransient<IFactsService, FactsService>();
 			services.AddTransient<IAnswersService, AnswersService>();
+			services.AddTransient<IDiseasesService, DiseasesService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
@@ -91,7 +92,7 @@ namespace CDGBulgaria.Web
 			
 
 			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-			CultureInfo.DefaultThreadCurrentUICulture  = CultureInfo.InvariantCulture;
+			CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
 			using (var serviceScope = app.ApplicationServices.CreateScope())
 			{

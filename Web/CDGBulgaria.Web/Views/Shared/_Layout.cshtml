@@ -15,13 +15,16 @@
 			  crossorigin="anonymous"
 			  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
 	</environment>
-	<link rel="stylesheet" href="~/css/site.css" />
-	<link rel="stylesheet" href="~/bootstrap.min.css" />
-	@*<link rel="stylesheet" href="~/css/style.css" />*@
+	<link rel="stylesheet" href="~/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/fontawesome.min.css" />
 	<link rel="stylesheet" href="~/css/jquery.datetimepicker.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/css/style.css" />
 	<script src="~/js/jquery-3.4.1.min.js"></script>
 	<script src="~/js/popper.min.js"></script>
 	<script src="~/js/bootstrap.min.js"></script>
+	<script src="~/js/jquery.datetimepicker.full.min.js"></script>
+	<script src="~/js/fontawesome.min.js"></script>
 	<script src="~/js/site.js"></script>
 </head>
 <body>
@@ -53,12 +56,17 @@
 								   data-toggle="dropdown"
 								   aria-haspopup="true"
 								   aria-expanded="false">
-									CDG - DESEASES
+									CDG - DISEASES
 								</a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item text-info" href="/Deseases/About">What Is CDG-Desease?</a>
-									<a class="dropdown-item text-info" href="/Deseases/Details">CDG-TYPES</a>
-								</div>
+									<a class="dropdown-item text-info" href="/Diseases/About">What Is CDG-Disease?</a>
+									<a class="dropdown-item text-info" href="/Diseases/Info">CDG-TYPES</a>
+									<a class="dropdown-item text-danger" href="/Diseases/All">All CDG-Diseases</a>
+									@if (this.User.IsInRole("Admin"))
+									{
+										<a class="dropdown-item text-info" asp-area="Administration" asp-controller="Diseases" asp-action="Create">CDGDisease-Add</a>
+									}
+									</div>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -197,10 +205,11 @@
 			<div class="container">
 				<h1 class="text-center  text-dark font-weight-bold">Welcome to</h1>
 				<h1 class="text-center text-dark  font-weight-bold">CDGBulgaria - The Bulgarian Association</h1>
+				<h3 class="text-center text-dark  font-weight-bold">For CDG Rare Group Diseases</h3>
 			</div>
 		</div>
 		<hr class="hr-2 bg-primary mx-auto">
-		<div class="d-flex justify-content-between">
+		<div class="d-flex justify-content-sm-between">
 			<div class="image">
 				<img class="img-thumbnail cdg-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeQpIUeNrTkkIkX8aYiK4v-SnsESTrpyxrSjTv6ckZ2wQ_rH1w9A" alt="cdg-disease" title="jackie-chan-helping-to-fight-pmm2-cdg" />
 				<p class="text-dark text-center">Jackie Chan Helping To Fight PMM2-CDG</p>
@@ -242,8 +251,8 @@
 			alert("You must be logged in to ask a question.");
 		}
 	</script>
-	<script src="~/lib/jquery/dist/jquery.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	@*<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>*@
 
 	<script src="~/js/site.js" asp-append-version="true"></script>
 

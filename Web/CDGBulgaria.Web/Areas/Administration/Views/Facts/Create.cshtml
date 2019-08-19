@@ -9,7 +9,7 @@
 
 <h2 class="text-center text-info">Create Fact</h2>
 
-<hr class="hr-2 bg-primary mt-4">
+<hr class="hr-2 bg-primary mt-4 w-50">
 
 <form class="mx-auto width w-50" asp-method="post" asp-area="Administration" asp-page="/Facts/Create" enctype="multipart/form-data">
 	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -28,5 +28,9 @@
 		<button type="submit" class="btn btn-primary">Create</button>
 	</div>
 </form>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 
