@@ -19,7 +19,7 @@ namespace CDGBulgaria.Data
 
 		public DbSet<Event> Events { get; set; }
 
-		public DbSet<CDGDesease> Deseases { get; set; }
+		public DbSet<CDGDisease> CDGDiseases { get; set; }
 
 		public DbSet<Fact> Facts { get; set; }
 
