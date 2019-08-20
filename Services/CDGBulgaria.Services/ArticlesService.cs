@@ -16,7 +16,6 @@ namespace CDGBulgaria.Services
 	public class ArticlesService : IArticlesService
 	{
 		private readonly CDGBulgariaDbContext context;
-		private readonly IHttpContextAccessor contextAccessor;
 
 		private const string AtoZAuthorNameOrderCriteria = "authorname-a-to-z";
 
@@ -26,14 +25,13 @@ namespace CDGBulgaria.Services
 
 		private const string NewestToOldestDateOrderCriteria = "date-newest-to-oldest";
 
-		public ArticlesService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
+		public ArticlesService(CDGBulgariaDbContext context)
 		{
 			this.context = context;
-			this.contextAccessor = contextAccessor;
 		}
 		public async Task<bool> CreateArticle(ArticleServiceModel serviceModel)
 		{
-			//string authorId = contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+		
 
 			Article article = new Article
 			{
