@@ -20,8 +20,6 @@ namespace CDGBulgariaTests.Service
 	{
 		private ArticlesService articlesService;
 
-		private IHttpContextAccessor contextAccessor;
-
 		public ArticlesServiceTests()
 		{
 			MapperInitializer.InitializeMapper();
@@ -53,15 +51,13 @@ namespace CDGBulgariaTests.Service
 		[Fact]
 		public async Task GetAllArticles_WithInitialData_ShouldReturnCorrectResult()
 		{
-
 			string errorMessagePrefix = "ArticlesService Method GetAllArticles() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
 
-			this.contextAccessor = new HttpContextAccessor();
-			 this.articlesService = new ArticlesService(context, contextAccessor);
+			 this.articlesService = new ArticlesService(context);
 
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles().ToListAsync();
@@ -87,10 +83,7 @@ namespace CDGBulgariaTests.Service
 			string errorMessagePrefix = "ArticlesService Method GetAllArticles() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
-
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles().ToListAsync();
 
@@ -107,9 +100,7 @@ namespace CDGBulgariaTests.Service
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			ArticleServiceModel articleServiceModel = new ArticleServiceModel()
 			{
@@ -119,7 +110,6 @@ namespace CDGBulgariaTests.Service
 			};
 
 			bool actualResult = await this.articlesService.CreateArticle(articleServiceModel);
-
 			Assert.True(actualResult, errorMessagePrefix);
 		}
 
@@ -127,15 +117,12 @@ namespace CDGBulgariaTests.Service
 		[Fact]
 		public async Task GetById_WithNonExistentId_ShouldReturnNull()
 		{
-
 			string errorMessagePrefix = "ArticlesService Method GetArticleById() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			ArticleServiceModel actualResult = await this.articlesService.GetArticleById("fake1");
 
@@ -152,9 +139,7 @@ namespace CDGBulgariaTests.Service
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			ArticleServiceModel expectedData = context.Articles.First().To<ArticleServiceModel>();
 
@@ -173,9 +158,7 @@ namespace CDGBulgariaTests.Service
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			ArticleServiceModel expectedData = context.Articles.First().To<ArticleServiceModel>();
 
@@ -202,9 +185,7 @@ namespace CDGBulgariaTests.Service
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			ArticleServiceModel expectedData = context.Articles.First().To<ArticleServiceModel>();
 
@@ -227,9 +208,7 @@ namespace CDGBulgariaTests.Service
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			ArticleServiceModel expectedData = context.Articles.First().To<ArticleServiceModel>();
 
@@ -249,9 +228,7 @@ namespace CDGBulgariaTests.Service
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
+			this.articlesService = new ArticlesService(context);
 
 			string idToDelete = context.Articles.First().To<ArticleServiceModel>().Id;
 
@@ -259,23 +236,15 @@ namespace CDGBulgariaTests.Service
 
 			int expectedCount = 1;
 			int actualCount = context.Articles.Count();
-
 			Assert.True(expectedCount==actualCount, errorMessagePrefix);
 		}
 
 		[Fact]
 		public async Task Delete_WithGivenNonExistenId_ShouldThrowArgumentNullException()
 		{
-
-			string errorMessagePrefix = "ArticlesService Method Delete() does not work properly.";
-
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
-
 			await SeedData(context);
-
-			this.contextAccessor = new HttpContextAccessor();
-			this.articlesService = new ArticlesService(context, contextAccessor);
-
+			this.articlesService = new ArticlesService(context);
 			await Assert.ThrowsAsync<ArgumentNullException>(() => this.articlesService.Delete("Non-Existent"));
 		}
 	}
