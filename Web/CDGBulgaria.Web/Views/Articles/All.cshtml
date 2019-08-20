@@ -4,7 +4,13 @@
 	ViewData["Title"] = "All";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 
-	
+	var criteria = new Dictionary<string, string>()
+{
+		{ "authorname-a-to-z", "AuthorName (a to z)" },
+		{ "authorname-z-to-a", "AuthorName (z to a)" },
+		{ "date-oldest-to-newest", "Date of Creating (oldest to newest)" },
+		{ "date-newest-to-oldest", "Date of Creating (newest to oldest)" }
+	};
 }
 
 <h1 class="text-center text-info">CDG Articles</h1>
@@ -47,5 +53,25 @@
 	</div>
 	}
 </div>
+
+<script>
+        $('#sort').change(function () {
+            $('#order-form').submit();
+        });
+
+        //$('#articles-search-bar').on("change paste keyup", function () {
+        //    $('.article').show();
+
+        //    let searchValue = $('#articles-search-bar').val();
+
+        //    for (let elem of $('.article')) {
+        //        let articleName = $($(elem).children()[1]).text();
+
+        //        if (!articleName.toLowerCase().includes(searchValue.toLowerCase())) {
+        //            $(elem).hide();
+        //        }
+        //    }
+        //});
+</script>
 
 

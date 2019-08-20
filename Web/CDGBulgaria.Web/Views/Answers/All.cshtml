@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CDGBulgaria.Web.ViewModels.Answer.AnswerViewModel>
+
+@{
+    ViewData["Title"] = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Answers To This Question:</h1>
+
+
+@foreach (var answer in Model) {
+    
+	<p>@answer.QuestionContent</p>
+	<p>@answer.Content</p>
+	<br/>
+}
+   

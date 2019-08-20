@@ -18,8 +18,13 @@ namespace CDGBulgaria.Services
 		private readonly CDGBulgariaDbContext context;
 		private readonly IHttpContextAccessor contextAccessor;
 
+		private const string AtoZAuthorNameOrderCriteria = "authorname-a-to-z";
 
-		
+		private const string ZtoAAuthorNameOrderCriteria = "authorname-z-to-a";
+
+		private const string OldestToNewestDateOrderCriteria = "date-oldest-to-newest";
+
+		private const string NewestToOldestDateOrderCriteria = "date-newest-to-oldest";
 
 		public ArticlesService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
 		{
@@ -28,14 +33,13 @@ namespace CDGBulgaria.Services
 		}
 		public async Task<bool> CreateArticle(ArticleServiceModel serviceModel)
 		{
-			string authorId = contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+			//string authorId = contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
 			Article article = new Article
 			{
 				Title = serviceModel.Title,
 				Content = serviceModel.Content,
 				CreatedOn = DateTime.UtcNow,
-				AuthorId=authorId,
 				Author = new CDGUser {
 					FullName=serviceModel.Author.FullName
 				}
@@ -46,7 +50,7 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
-		public IQueryable<ArticleServiceModel> GetAllArticles(string criteria = null)
+		public IQueryable<ArticleServiceModel> GetAllArticles(string criteria =null)
 		{
 			var allArticles = this.context.Articles.To<ArticleServiceModel>();
 
@@ -71,9 +75,9 @@ namespace CDGBulgaria.Services
 				throw new ArgumentNullException(nameof(articleFromDb));
 			}
 
+			articleFromDb.Title = articleServiceModel.Title;
 			articleFromDb.Content = articleServiceModel.Content;
-			articleFromDb.CreatedOn = DateTime.UtcNow;
-			articleFromDb.AuthorId = articleServiceModel.AuthorId;
+			articleFromDb.Author.FullName = articleServiceModel.Author.FullName;
 			
 
 			this.context.Articles.Update(articleFromDb);
@@ -97,7 +101,39 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
-		
+		//public IQueryable<ArticleServiceModel> GetAllArticles(string criteria = null)
+		//{
+		//	switch (criteria)
+		//	{
+		//		case AtoZAuthorNameOrderCriteria: return this.GetAllProductsByAuthorNameAscending().To<ArticleServiceModel>();
+		//		case ZtoAAuthorNameOrderCriteria: return this.GetAllProductsByAuthorNameDescending().To<ArticleServiceModel>();
+		//		case OldestToNewestDateOrderCriteria: return this.GetAllArticlesByDateCreatedOnDescending().To<ArticleServiceModel>();
+		//		case NewestToOldestDateOrderCriteria: return this.GetAllProductsByAuthorNameAscending().To<ArticleServiceModel>();
+		//	}
+
+		//	return this.context.Articles.To<ArticleServiceModel>();
+		//}
+
+		private IQueryable<Article> GetAllProductsByAuthorNameAscending()
+		{
+			return this.context.Articles.OrderBy(article => article.Author.FullName);
+		}
+
+		private IQueryable<Article> GetAllProductsByAuthorNameDescending()
+		{
+			return this.context.Articles.OrderByDescending(article => article.Author.FullName);
+		}
+
+		private IQueryable<Article> GetAllArticlesByDateCreatedOnAscending()
+		{
+			return this.context.Articles.OrderBy(article => article.CreatedOn);
+		}
+
+		private IQueryable<Article> GetAllArticlesByDateCreatedOnDescending()
+		{
+			return this.context.Articles.OrderByDescending(article => article.CreatedOn);
+		}
+
 	}
 }
 

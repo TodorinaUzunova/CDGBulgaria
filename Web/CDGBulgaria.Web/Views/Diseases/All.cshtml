@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CDGBulgaria.Web.ViewModels.Disease.CDGDiseaseViewModel>
+
+@{
+	ViewData["Title"] = "All";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+	<hr class="text-info text-center w-50">
+@foreach (var disease in Model)
+{
+<div class="text">
+	<p class="display-4 text-center text-info">@disease.Name</p>
+	<hr class="text-info text-center w-50">
+	<p>
+		@disease.Description
+	</p>
+	@if (this.User.IsInRole("Admin"))
+	{
+		<div id="navigation-holder" class="mt-4 d-flex justify-content-between">
+			<a href="/Administration/Diseases/Edit/@disease.Id" class="btn btn-danger text-white font-weight-bold">Edit</a>
+			<a href="/Administration/Diseases/Delete/@disease.Id" class="btn btn-danger text-white font-weight-bold">Delete</a>
+		</div>
+			}
+			<hr class="text-info text-center w-50">
+		</div>
+	}
+

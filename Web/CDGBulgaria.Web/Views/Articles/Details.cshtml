@@ -1,0 +1,30 @@
+﻿@model CDGBulgaria.Web.ViewModels.Article.ArticleDetailsViewModel
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="text-center text-info">Read More:</h4>
+<hr class="hr-2 bg-primary">
+
+<div class="article text">
+	<h4 class="text-center text-danger">@Model.Title</h4>
+	<p>
+		@Model.Content
+	</p>
+
+	<h6 class="text-primary">Created by: @Model.AuthorFullName</h6>
+
+	<p>@Model.CreatedOn</p>
+	<div id="navigation-holder" class="mt-4 d-flex justify-content-around">
+		@if (this.User.IsInRole("Admin"))
+		{
+			<a href="/Administration/Articles/Edit/@Model.Id" class="btn btn-danger text-white font-weight-bold">Edit</a>
+			<a href="/Administration/Articles/Delete/@Model.Id" class="btn btn-danger text-white font-weight-bold">Delete</a>
+		}
+		<a href="/Articles/All/" class="btn btn-primary text-white font-weight-bold">Back to Articles</a>
+	</div>
+</div>
+<hr class="hr-2 bg-primary">
+

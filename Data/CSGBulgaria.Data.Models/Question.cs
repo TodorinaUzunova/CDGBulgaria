@@ -10,6 +10,7 @@ namespace CDGBulgaria.Data.Models
 		public Question()
 		{
 		       this.Id =  Guid.NewGuid().ToString();
+			   this.Answers = new List<Answer>();
 	     }
 
 		[Required]

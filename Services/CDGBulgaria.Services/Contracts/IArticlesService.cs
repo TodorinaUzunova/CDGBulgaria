@@ -10,7 +10,7 @@ namespace CDGBulgaria.Services.Contracts
 	public interface IArticlesService
    {
 		
-	    IQueryable<ArticleServiceModel> GetAllArticles(string criteria=null);
+	    IQueryable<ArticleServiceModel> GetAllArticles(string criteria);
 
 
 		Task<bool> CreateArticle(ArticleServiceModel serviceModel);
