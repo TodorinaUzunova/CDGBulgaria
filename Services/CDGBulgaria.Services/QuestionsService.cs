@@ -17,27 +17,22 @@ namespace CDGBulgaria.Services
 	public class QuestionsService:IQuestionsService
 	{
 		private readonly CDGBulgariaDbContext context;
-		private readonly IHttpContextAccessor contextAccessor;
 
-
-		public QuestionsService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
+		public QuestionsService(CDGBulgariaDbContext context)
 		{
 			this.context = context;
-			this.contextAccessor = contextAccessor;
 		}
 
 		public async Task<bool> Create(QuestionServiceModel questionServiceModel)
 		{
-			string authorId= contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+		
 			Question question = new Question
 			{
 				Content = questionServiceModel.Content,
-				AuthorId= authorId,
-				CreatedOn = questionServiceModel.CreatedOn,
-			};
+				CreatedOn=questionServiceModel.CreatedOn,
+				AuthorId=questionServiceModel.AuthorId,
+			}; 
 
-			
 			await this.context.Questions.AddAsync(question);
 			int result = await this.context.SaveChangesAsync();
 			return result > 0;
