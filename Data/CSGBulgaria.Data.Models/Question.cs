@@ -22,6 +22,7 @@ namespace CDGBulgaria.Data.Models
 		[Required]
 		public DateTime CreatedOn { get; set; }
 
+		[Required]
 		public string AuthorId { get; set; }
 		public CDGUser Author { get; set; }
 
