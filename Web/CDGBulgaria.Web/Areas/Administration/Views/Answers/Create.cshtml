@@ -26,31 +26,16 @@
 			<option selected disabled>--- Select Question ---</option>
 			@foreach (var question in (IEnumerable<AnswerCreateQuestionViewModel>)this.ViewData["questions"])
 			{
-				@*@if (question.Id == Model.QuestionId && question.Content == Model.QuestionContent)
-					{
-						<option value="@question.Content" selected>@question.Content</option>
-					}
-					else
-					{*@
 				<option value="@question.Content">@question.Content</option>
-				<option value="@question.Id">@question.Id</option>
 
 			}
 		</select>
 	</div>
 	<div class="form-group mx-auto w-45">
 		<div class="d-flex justify-content-center">
-			<label asp-for="QuestionId" class="text-primary h5">QuestionId</label>
+			<input type="hidden" asp-for="QuestionId" class="form-control" />
+			<span asp-validation-for="QuestionId" class="text-danger"></span>
 		</div>
-		<select class="form-control text-primary" id="questionId" asp-for="QuestionId">
-			<option selected disabled>--- Select QuestionId ---</option>
-			@foreach (var question in (IEnumerable<AnswerCreateQuestionViewModel>)this.ViewData["questions"])
-			{
-				<option value="@question.Content">@question.Content</option>
-				<option value="@question.Id">@question.Id</option>
-
-			}
-		</select>
 	</div>
 	<div class="form-group text-info">
 		<label asp-for="Content" class="control-label"></label>

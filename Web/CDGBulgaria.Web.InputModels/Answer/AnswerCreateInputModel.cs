@@ -18,9 +18,7 @@ namespace CDGBulgaria.Web.InputModels.Answer
 		[Required(ErrorMessage = "QuestionContent is required!")]
 		public string QuestionContent { get; set; }
 
-		[Required(ErrorMessage = "QuestionId is required!")]
 		public string QuestionId { get; set; }
-
 
 		public string AuthorId { get; set; }
 

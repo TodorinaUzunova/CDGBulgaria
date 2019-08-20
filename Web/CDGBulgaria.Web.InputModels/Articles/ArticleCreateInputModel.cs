@@ -21,7 +21,7 @@ namespace CDGBulgaria.Web.InputModels.Articles
 
 		public string AuthorId { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "FullName is required!")]
 		[Display(Name ="FullName")]
 		public string AuthorFullName { get; set; }
 

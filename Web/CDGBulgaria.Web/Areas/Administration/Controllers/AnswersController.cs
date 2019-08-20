@@ -62,7 +62,8 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				Id = answerCreateInputModel.AuthorId,
 				Content = answerCreateInputModel.Content,
 				AuthorId = answerCreateInputModel.AuthorId,
-			    Question =new QuestionServiceModel {Id= answerCreateInputModel.QuestionId, Content= answerCreateInputModel.QuestionContent},
+			    Question =new QuestionServiceModel {Id= answerCreateInputModel.QuestionId,
+					Content = answerCreateInputModel.QuestionContent},
 			};
 			await this.answersService.CreateAnswer(answerServiceModel);
 			return this.Redirect("/");
