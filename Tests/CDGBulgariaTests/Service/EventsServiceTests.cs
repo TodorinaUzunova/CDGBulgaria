@@ -8,6 +8,7 @@ using CDGBulgariaTests.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -109,7 +110,7 @@ namespace CDGBulgariaTests.Service
 			{
 				Name = "CDGHealthMeeting",
 				Venue = "Sofia",
-				Start = DateTime.UtcNow.AddDays(+15),
+				Start = DateTime.ParseExact("05/03/2019 14:00", "mm/dd/yyyy HH:mm:ss" ,CultureInfo.InvariantCulture),
 				MoreInfo = "src/pics/something/sofia.pdf"
 			};
 
