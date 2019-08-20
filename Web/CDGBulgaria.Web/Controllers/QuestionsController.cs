@@ -7,6 +7,7 @@ using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Mapping;
 using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.InputModels.Question;
+using CDGBulgaria.Web.ViewModels.Answer;
 using CDGBulgaria.Web.ViewModels.Question;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -55,11 +56,10 @@ namespace CDGBulgaria.Web.Controllers
 				{
 					Content=question.Content,
 					CreatedOn=question.CreatedOn,
-					AuthorUserName=question.Author.UserName
+					AuthorUserName=question.Author.UserName,
+					//Answers=question.Answers.To<AnswerViewModel>().ToList(),
 				})
 				.ToListAsync();
-
-			//this.ViewData["questions"] = questions;
 
 			return this.View(questions);
 		}

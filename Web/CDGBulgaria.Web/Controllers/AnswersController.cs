@@ -21,19 +21,21 @@ namespace CDGBulgaria.Web.Controllers
 		}
 
 	    [HttpGet]
-		[Route("/Answers/All/{id}")]
-        public async Task<IActionResult> All(string id)
+		//[Route("/Answers/All")]
+        public async Task<IActionResult> All([FromQuery]string id)
         {
-			if (id==null)
+			if (id == null)
 			{
 				return NotFound();
 			}
-			var allAnswers = await this.answersService.GetAllAnswersForAQuestionById(id).ToListAsync();
+			var allAnswers = await this.answersService.GetAllAnswersForAQuestionById(id)
+				.Select(a=>new AnswerViewModel
+				{ QuestionId=a.QuestionId,
+				QuestionContent=a.Question.Content,
+				Content=a.Content})
+				.ToListAsync();
 
-			foreach (var answer in allAnswers)
-			{
-				answer.To<AnswerViewModel>();
-			}
+			
             return this.View(allAnswers);
         }
     }

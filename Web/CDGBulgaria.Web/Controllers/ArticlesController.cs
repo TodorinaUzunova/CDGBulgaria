@@ -45,24 +45,8 @@ namespace CDGBulgaria.Web.Controllers
 
 			return this.Redirect("/Articles/All");
 		}
-		//[HttpGet]
-		//public async Task<IActionResult> All([FromQuery]string criteria)
-		//{
-		//	List<ArticleViewModel> articles = this.articlesService.GetAllArticles(criteria)
-		//				  .Select(article => new ArticleViewModel
-		//				  {
-		//					  Id = article.Id,
-		//					  Title = article.Title,
-		//					  Content = article.Content,
-		//					  CreatedOn = article.CreatedOn,
-		//					  AuthorFullName = article.Author.FullName,
-		//				  })
-		//			   .ToList();
 
-		//	this.ViewData["criteria"] = criteria;
-
-		//	return this.View(articles);
-		//}
+		[HttpGet]
 		public async Task<IActionResult> All([FromQuery] string criteria=null)
 		{
 			if (this.User.Identity.IsAuthenticated)

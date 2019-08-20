@@ -20,17 +20,18 @@
 		@foreach (var question in Model)
 		{
 
-			<tr class="row text-left font-weight-bold">
-				<td class="col-md-6 h6">@question.Content</td>
-				<td class="col-md-2 h7 text-center">@question.AuthorUserName</td>
-				<td class="col-md-2 h7 text-center">@question.CreatedOn?.ToString("dd/MM/yyyy HH:mm")</td>
-				<td class="col-md-2 h7">
-					<div class="container">
+		<tr class="row text-left font-weight-bold">
+			<td class="col-md-6 h6">@question.Content</td>
+			<td class="col-md-2 h7 text-center">@question.AuthorUserName</td>
+			<td class="col-md-2 h7 text-center">@question.CreatedOn?.ToString("dd/MM/yyyy HH:mm")</td>
+			<td class="col-md-2 h7">
+				<div class="container">
+					@*@Html.ActionLink("Answers", "All", new { id = 1 });*@
 						<a href="/Answers/All/@question.Id" asp-method="get" class="btn btn-primary text-white font-weight-bold">Answers</a>
-					</div>
+				</div>
 
-				</td>
-			</tr>
+			</td>
+		</tr>
 		}
 	</tbody>
 </table>
