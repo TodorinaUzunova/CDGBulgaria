@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CDGBulgaria.Data.Models;
 using CDGBulgaria.Services.Contracts;
@@ -34,14 +35,15 @@ namespace CDGBulgaria.Web.Controllers
 		[Authorize]
 		public async Task<IActionResult> Create(QuestionCreateInputModel model)
         {
-
-
 			if (!this.ModelState.IsValid)
 			{
 				return this.View(model);
 			
 			}
 			model.CreatedOn = DateTime.UtcNow;
+			model.AuthorUserName = this.User.FindFirst(ClaimTypes.Name).Value;
+			model.AuthorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
 			QuestionServiceModel serviceModel = model.To<QuestionServiceModel>();
 			await this.questionsService.Create(serviceModel);
 
@@ -51,6 +53,7 @@ namespace CDGBulgaria.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> All()
 		{
+		
 			var questions = await this.questionsService.GetAllQuestions()
 				.Select(question => new QuestionViewModel
 				{

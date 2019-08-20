@@ -1,4 +1,5 @@
 ﻿using AspNetCoreTemplate.Services.Mapping;
+using AutoMapper;
 using CDGBulgaria.Services.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace CDGBulgaria.Web.InputModels.Question
 		public string Content { get; set; }
 
 		public DateTime? CreatedOn { get; set; }
-	
+
 		public string AuthorId { get; set; }
+
+		public string AuthorUserName { get; set; }
 	}
 }
