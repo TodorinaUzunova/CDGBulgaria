@@ -3,7 +3,9 @@ using CDGBulgaria.Data;
 using CDGBulgaria.Data.Models;
 using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Models;
+using CDGBulgaria.Web.InputModels.Answer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,26 +18,21 @@ namespace CDGBulgaria.Services
 	public class AnswersService : IAnswersService
 	{
 		private readonly CDGBulgariaDbContext context;
-		private readonly IHttpContextAccessor contextAccessor;
+	
 
-		public AnswersService(CDGBulgariaDbContext context, IHttpContextAccessor contextAccessor)
+		public AnswersService(CDGBulgariaDbContext context)
 		{
 			this.context = context;
-			this.contextAccessor = contextAccessor;
 		}
 		public async Task<bool> CreateAnswer(AnswerServiceModel answerServiceModel)
 		{
-			string authorId = contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-			Question questionFromDb = context.Questions.SingleOrDefault(question=>question.Content==answerServiceModel.Question.Content); 
-
 			Answer answer = new Answer
 			{
-				Id = answerServiceModel.Id,
 				Content=answerServiceModel.Content,
-				AuthorId = authorId,
-				QuestionId=questionFromDb.Id,
-				Question = questionFromDb,
+				Question=new Question {Id=answerServiceModel.QuestionId,
+					Content =answerServiceModel.Question.Content},
+				AuthorId=answerServiceModel.AuthorId,
+				
 			};
 
 			await this.context.Answers.AddAsync(answer);
@@ -45,7 +42,7 @@ namespace CDGBulgaria.Services
 
 		public  IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
 		{
-		     var answersForAQuestion = this.context.Answers.Where(a=>a.QuestionId==id)
+		     var answersForAQuestion = this.context.Answers.Include(a=>a.Question).Where(a=>a.QuestionId==id)
 				.To<AnswerServiceModel>();
 
 			return answersForAQuestion;

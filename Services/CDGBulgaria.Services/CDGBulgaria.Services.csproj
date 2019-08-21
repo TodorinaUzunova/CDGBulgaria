@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\CDGBulgaria.Data\CDGBulgaria.Data.csproj" />
     <ProjectReference Include="..\..\Data\CSGBulgaria.Data.Models\CDGBulgaria.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\CDGBulgaria.Web.InputModels\CDGBulgaria.Web.InputModels.csproj" />
     <ProjectReference Include="..\CDGBulgaria.Services.Models\CDGBulgaria.Services.Models.csproj" />
   </ItemGroup>
 

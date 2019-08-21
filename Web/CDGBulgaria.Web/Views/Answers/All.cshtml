@@ -1,17 +1,27 @@
 ﻿@model IEnumerable<CDGBulgaria.Web.ViewModels.Answer.AnswerViewModel>
 
 @{
-    ViewData["Title"] = "All";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "All";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	var answerList= this.Model.ToList();
 }
 
-<h1>All Answers To This Question:</h1>
+<hr class="hr-2 bg-primary">
+<table class="table">
+	<thead>
+		<tr class="row text-primary text-center text-white">
+			<th class="col-md-12 h4">See here all answers to this question:</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (int i  = 0; i<answerList.Count; i++)
+		{
 
+			<tr class="row text-center font-weight-bold bg-primary">
+				<td class="col-md-12 h5"><h5 class="text-dark text-left">@(i+1).@answerList[i].Content</h5></td>
+			</tr>
 
-@foreach (var answer in Model) {
-    
-	<p>@answer.QuestionContent</p>
-	<p>@answer.Content</p>
-	<br/>
-}
-   
+		}
+	</tbody>
+</table>
+<hr class="hr-2 bg-primary">

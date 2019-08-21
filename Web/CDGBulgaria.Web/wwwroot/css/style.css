@@ -1,3 +1,14 @@
 ﻿.border-primary-4 {
 	border: 4px solid #007bff;
 }
+
+hr.hr-2 {
+	height: 1px;
+}
+
+.bg-full-white {
+	background-color: #FFFFFF;
+}
+#JeckyChan-img {
+	background-color: #77807a;
+}

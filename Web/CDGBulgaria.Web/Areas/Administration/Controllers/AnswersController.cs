@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Mapping;
@@ -56,15 +57,16 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				});
 				return this.View(answerCreateInputModel);
 			}
+			string authorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+			string author = this.User.FindFirst(ClaimTypes.Name).Value;
 
 			AnswerServiceModel answerServiceModel =  new AnswerServiceModel
 			{
-				Id = answerCreateInputModel.AuthorId,
 				Content = answerCreateInputModel.Content,
-				AuthorId = answerCreateInputModel.AuthorId,
 			    Question =new QuestionServiceModel {Id= answerCreateInputModel.QuestionId,
-					Content = answerCreateInputModel.QuestionContent},
+				Content = answerCreateInputModel.QuestionContent},
 			};
+			answerServiceModel.AuthorId = authorId;
 			await this.answersService.CreateAnswer(answerServiceModel);
 			return this.Redirect("/");
 		}

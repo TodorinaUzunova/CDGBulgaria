@@ -21,7 +21,7 @@ namespace CDGBulgaria.Web.Controllers
 		}
 
 	    [HttpGet]
-		//[Route("/Answers/All")]
+		[Route("/Answers/All")]
         public async Task<IActionResult> All([FromQuery]string id)
         {
 			if (id == null)

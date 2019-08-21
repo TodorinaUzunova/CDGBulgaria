@@ -57,6 +57,7 @@ namespace CDGBulgaria.Web.Controllers
 			var questions = await this.questionsService.GetAllQuestions()
 				.Select(question => new QuestionViewModel
 				{
+					Id=question.Id,
 					Content=question.Content,
 					CreatedOn=question.CreatedOn,
 					AuthorUserName=question.Author.UserName,

@@ -6,13 +6,14 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h2 class="text-center text-info">All Questions</h2>
+<hr class="hr-2 bg-primary mx-auto">
 <table class="table">
 	<thead>
-		<tr class="row text-primary text-center font-weight-bold">
-			<th class="col-md-6 h5">Content</th>
-			<th class="col-md-2 h5">Author</th>
-			<th class="col-md-2 h5">CreatedOn</th>
+		<tr class="row text-primary text-center bg-full-white font-weight-bold">
+			<th class="col-md-6 h5">Question</th>
+			<th class="col-md-2 h5">Username</th>
+			<th class="col-md-2 h5">Date time</th>
 			<th class="col-md-2 h5">Answers</th>
 		</tr>
 	</thead>
@@ -20,14 +21,14 @@
 		@foreach (var question in Model)
 		{
 
-		<tr class="row text-left font-weight-bold">
+		<tr class="row text-left bg-primary font-weight-bold">
 			<td class="col-md-6 h6">@question.Content</td>
 			<td class="col-md-2 h7 text-center">@question.AuthorUserName</td>
 			<td class="col-md-2 h7 text-center">@question.CreatedOn?.ToString("dd/MM/yyyy HH:mm")</td>
 			<td class="col-md-2 h7">
 				<div class="container">
-					@*@Html.ActionLink("Answers", "All", new { id = 1 });*@
-						<a href="/Answers/All/@question.Id" asp-method="get" class="btn btn-primary text-white font-weight-bold">Answers</a>
+					<a href="@Url.Action("All","Answers", new {id=question.Id})"
+					   class="btn btn-primary btn-lg">Answers</a>				
 				</div>
 
 			</td>
