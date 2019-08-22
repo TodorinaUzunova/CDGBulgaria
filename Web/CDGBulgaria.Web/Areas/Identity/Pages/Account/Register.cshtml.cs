@@ -76,7 +76,7 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
 				var isRoot = !_userManager.Users.Any();
-                var user = new CDGUser { UserName = Input.Username, Email = Input.Email };
+                var user = new CDGUser { UserName = Input.Username, Email = Input.Email, FullName=Input.FullName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -90,16 +90,6 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
 						await _userManager.AddToRoleAsync(user, "User");
 					}
 					
-					//var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-					//var callbackUrl = Url.Page(
-					//    "/Account/ConfirmEmail",
-					//    pageHandler: null,
-					//    values: new { userId = user.Id, code = code },
-					//    protocol: Request.Scheme);
-
-					//await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-					//    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
 					return Redirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

@@ -56,6 +56,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		}
 
 		[HttpGet(Name = "Delete")]
+		[Authorize]
 		public async Task<IActionResult> Delete(string id)
 		{
 			if (id==null)
@@ -75,6 +76,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 		[HttpPost]
 		[Route("/Administration/Articles/Delete/{id}")]
+		[Authorize]
 		public async Task<IActionResult> DeleteConfirm(string id)
 		{
 

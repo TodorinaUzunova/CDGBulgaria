@@ -24,6 +24,7 @@ namespace CDGBulgaria.Web.Areas.Adminstration.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		public async Task<IActionResult> Create()
 		{
 			return this.View();

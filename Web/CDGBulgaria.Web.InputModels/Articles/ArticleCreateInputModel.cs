@@ -8,28 +8,16 @@ using System.Text;
 
 namespace CDGBulgaria.Web.InputModels.Articles
 {
-	public class ArticleCreateInputModel : IMapTo<ArticleServiceModel>, IHaveCustomMappings
+	public class ArticleCreateInputModel : IMapTo<ArticleServiceModel>
 	{
 		[Required(ErrorMessage = "Title is required!")]
-		[StringLength(50)]
+		[StringLength(80)]
 		public string Title { get; set; }
 
 		[Required(ErrorMessage = "Content is required!")]
 		public string Content { get; set; }
 
 		public DateTime CreatedOn { get; set; }
-
-		public string AuthorId { get; set; }
-
-		[Required(ErrorMessage = "FullName is required!")]
-		[Display(Name ="FullName")]
-		public string AuthorFullName { get; set; }
-
-		public void CreateMappings(IProfileExpression configuration)
-		{
-			configuration.CreateMap<ArticleCreateInputModel, ArticleServiceModel>()
-					.ForMember(destination => destination.Author,
-							   opts => opts.MapFrom(origin => new CDGUserServiceModel() { FullName = origin.AuthorFullName }));
-		}
+	
 	}
 }

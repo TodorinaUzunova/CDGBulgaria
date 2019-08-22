@@ -30,7 +30,7 @@
 <body>
 	<header>
 
-		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white rounded border-bottom box-shadow mb-3">
 			<div class="container">
 				<div class="navbar-collapse collapse d-flex justify-content-between">
 					<ul class="navbar-nav">
@@ -66,7 +66,7 @@
 									{
 										<a class="dropdown-item text-info" asp-area="Administration" asp-controller="Diseases" asp-action="Create">CDGDisease-Add</a>
 									}
-									</div>
+								</div>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -77,13 +77,14 @@
 							</button>
 						</li>
 						@if (!this.User.Identity.IsAuthenticated)
+						{<li>
+							<div class="container">
+								<button type="button" class="btn btn-danger" onclick="MustBeLoggedInFunction()">Ask a Question</button>
+							</div>
+						</li>
+						}
+						@if (this.User.Identity.IsAuthenticated)
 						{
-							<li>
-								<div class="container">
-									<button type="button" class="btn btn-danger" onclick="MustBeLoggedInFunction()">Ask a Question</button>
-								</div>
-							</li>
-
 							<li class="nav-item">
 								<a class="nav-link text-info" href="/Questions/All">All Questions</a>
 								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -91,9 +92,6 @@
 									<span class="navbar-toggler-icon"></span>
 								</button>
 							</li>
-						}
-						else
-						{
 							<li class="nav-item">
 								<a class="nav-link text-info" href="/Questions/Create">Ask a Question</a>
 								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -101,9 +99,6 @@
 									<span class="navbar-toggler-icon"></span>
 								</button>
 							</li>
-						}
-						@if (this.User.Identity.IsAuthenticated)
-						{
 							<li class="nav-item">
 								<div class="dropdown show">
 									<a class="nav-link active dropdown-toggle text-info" href="#"
@@ -212,7 +207,7 @@
 		<div class="d-flex justify-content-sm-between">
 			<div class="image">
 				<img class="img-thumbnail cdg-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeQpIUeNrTkkIkX8aYiK4v-SnsESTrpyxrSjTv6ckZ2wQ_rH1w9A" alt="cdg-disease" title="jackie-chan-helping-to-fight-pmm2-cdg" />
-				<p id="JackyChan-img"class="text-dark text-center">Jackie Chan Helping To Fight PMM2-CDG</p>
+				<p id="JackyChan-img" class="text-dark text-center">Jackie Chan Helping To Fight PMM2-CDG</p>
 			</div>
 			<div class="image">
 				<img class="img-thumbnail cdg-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqYK0j-6zP85q0LP_dMoGhmB4QgEZ6SDWqKWcgO2y1DpBWpnjn" alt="cdg-disease2" />
@@ -220,7 +215,7 @@
 			<div class="image">
 				<img class="img-thumbnail cdg-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9G_phAZj2vCj3fHhO8lZJ5viOCnCWRR_LD6v9aIDIX3zKVf32Gg" alt="cdg-disease2" />
 			</div>
-			
+
 			<div class="image">
 				<img class="img-thumbnail cdg-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_1JGG7ckpy_Epru-m4qsGM9pdYhi2KIRidGgcaJ9zxCHLiwkG" alt="cdg-disease2" />
 			</div>
@@ -230,34 +225,28 @@
 			</div>
 
 		</div>
-		
 		<main role="main" class="pb-3">
 			@RenderBody()
 		</main>
 	</div>
-	<footer class="border-top footer">
-		<div class="container-fluid">
-			<div class="text-white p-2 text-center">
-				<h5 class="font-weight-normal mt-2 py-0">
-					&copy; CopyRight Sanity Web Design Studios 2019. All rights
-					reserved.
-				</h5>
+	<footer>
+		<div class="bg-white rounded">
+			<div class="text-black-50 p-2 text-center font-weight-bold">
+				&copy; CopyRight Sanity Web Design Studios 2019. All rights
+				reserved.
 			</div>
 		</div>
 	</footer>
-
-	<script>
-		function MustBeLoggedInFunction() {
-			alert("You must be logged in to ask a question.");
-		}
-	</script>
-	@*<script src="~/lib/jquery/dist/jquery.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>*@
 
 	<script src="~/js/site.js" asp-append-version="true"></script>
 
 	@RenderSection("Scripts", required: false)
 </body>
 </html>
+<script>
+	function MustBeLoggedInFunction() {
+		alert("YOU MUST BE LOOGGED IN TO ASK A QUESTION.");
+	}
+</script>
 
 

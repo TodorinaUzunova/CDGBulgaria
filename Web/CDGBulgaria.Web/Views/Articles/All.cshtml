@@ -14,7 +14,38 @@
 }
 
 <h1 class="text-center text-info">CDG Articles</h1>
+<div class="d-flex justify-content-between">
+	<div id="articles-search-bar-holder" class="form-group d-flex justify-content-between w-50">
+		<input type="text" class="form-control text-primary" id="articles-search-bar" name="search" placeholder="Search..." />
+	</div>
+	<div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
+		<label for="sort" class="text-primary font-weight-bold w-30 h4 mt-1 text-right">Order By: </label>
+		<form id="order-form"  action="/Articles/All" method="get">
+			<select id="sort" class="form-control text-primary pl-2 ml-3 w-70" name="criteria">
+				@if (this.ViewData["criteria"] == null)
+				{
+					<option selected>None</option>
+				}
+				else
+				{
+					<option>None</option>
+				}
 
+				@foreach (var elem in criteria)
+				{
+					if (elem.Key == (string)this.ViewData["criteria"])
+					{
+						<option value="@elem.Key" selected>@elem.Value</option>
+					}
+					else
+					{
+						<option value="@elem.Key">@elem.Value</option>
+					}
+				}
+			</select>
+		</form>
+	</div>
+</div>
 
 <div id="articles" class="mt-3">
 
@@ -25,7 +56,7 @@
 		{
 			if (j < Model.Count())
 			{
-				
+	
 		<div class="article col-md-3">
 			<hr class="hr-2 bg-primary">
 			<h4 class="text-center text-danger">@Model[j].Title</h4>
@@ -46,7 +77,7 @@
 			}
 			else
 			{
-				<div class="product col-md-2 empty">
+				<div class="article col-md-2 empty">
 				</div>
 			}
 		}
@@ -59,19 +90,19 @@
             $('#order-form').submit();
         });
 
-        //$('#articles-search-bar').on("change paste keyup", function () {
-        //    $('.article').show();
+        $('#articles-search-bar').on("change paste keyup", function () {
+            $('.article').show();
 
-        //    let searchValue = $('#articles-search-bar').val();
+            let searchValue = $('#articles-search-bar').val();
 
-        //    for (let elem of $('.article')) {
-        //        let articleName = $($(elem).children()[1]).text();
+            for (let elem of $('.article')) {
+                let articleName = $($(elem).children()[1]).text();
 
-        //        if (!articleName.toLowerCase().includes(searchValue.toLowerCase())) {
-        //            $(elem).hide();
-        //        }
-        //    }
-        //});
+                if (!articleName.toLowerCase().includes(searchValue.toLowerCase())) {
+                    $(elem).hide();
+                }
+            }
+        });
 </script>
 
 

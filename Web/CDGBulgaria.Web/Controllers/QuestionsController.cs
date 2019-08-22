@@ -61,7 +61,6 @@ namespace CDGBulgaria.Web.Controllers
 					Content=question.Content,
 					CreatedOn=question.CreatedOn,
 					AuthorUserName=question.Author.UserName,
-					//Answers=question.Answers.To<AnswerViewModel>().ToList(),
 				})
 				.ToListAsync();
 

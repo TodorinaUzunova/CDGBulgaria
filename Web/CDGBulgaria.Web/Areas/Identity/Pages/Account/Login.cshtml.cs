@@ -56,7 +56,7 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
 
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-			returnUrl = returnUrl ?? Url.Content("~/");
+		    ReturnUrl = returnUrl ?? Url.Content("~/");
 		}
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

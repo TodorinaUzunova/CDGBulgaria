@@ -52,7 +52,6 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 				this.ViewData["questions"] = allQuestions.Select(question=>new AnswerCreateQuestionViewModel
 				{
-					Id=question.Id,
 					Content=question.Content,
 				});
 				return this.View(answerCreateInputModel);
@@ -60,15 +59,11 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 			string authorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 			string author = this.User.FindFirst(ClaimTypes.Name).Value;
 
-			AnswerServiceModel answerServiceModel =  new AnswerServiceModel
-			{
-				Content = answerCreateInputModel.Content,
-			    Question =new QuestionServiceModel {Id= answerCreateInputModel.QuestionId,
-				Content = answerCreateInputModel.QuestionContent},
-			};
+			AnswerServiceModel answerServiceModel = answerCreateInputModel.To<AnswerServiceModel>();
 			answerServiceModel.AuthorId = authorId;
+
 			await this.answersService.CreateAnswer(answerServiceModel);
 			return this.Redirect("/");
 		}
 	}
-}
+} 

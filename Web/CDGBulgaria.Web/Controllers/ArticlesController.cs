@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Mapping;
@@ -39,7 +40,10 @@ namespace CDGBulgaria.Web.Controllers
 			{
 				return this.View(model);
 			}
+			
+			
 			ArticleServiceModel serviceModel = model.To<ArticleServiceModel>();
+		    serviceModel.AuthorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
 			await this.articlesService.CreateArticle(serviceModel);
 

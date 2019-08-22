@@ -34,7 +34,6 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
         }
 
 		[HttpGet(Name = "Edit")]
-		[Authorize]
 		public async Task<IActionResult> Edit(int id)
 		{
 		    CDGDiseaseEditInputModel cdgDiseaseEditInputModel = (await this.diseasesService.GetCDGDiseaseById(id)).To<CDGDiseaseEditInputModel>();
@@ -48,7 +47,6 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		}
 
 		[HttpPost(Name = "Edit")]
-		[Authorize]
 		public async Task<IActionResult> Edit(int id, CDGDiseaseEditInputModel diseaseEditInputModel)
 		{
 			

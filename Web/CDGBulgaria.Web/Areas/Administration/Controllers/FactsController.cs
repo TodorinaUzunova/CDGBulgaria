@@ -7,6 +7,7 @@ using CDGBulgaria.Services.Models;
 using CDGBulgaria.Web.Areas.Adminstration.Controllers;
 using CDGBulgaria.Web.InputModels.Event;
 using CDGBulgaria.Web.InputModels.Fact;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CDGBulgaria.Web.Areas.Administration.Controllers
