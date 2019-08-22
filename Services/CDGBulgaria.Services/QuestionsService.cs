@@ -4,6 +4,7 @@ using CDGBulgaria.Data.Models;
 using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,29 @@ namespace CDGBulgaria.Services
 			var  allQuestions=this.context.Questions.To<QuestionServiceModel>();
 
 			return allQuestions;
+		}
+
+		public async Task<QuestionServiceModel> GetQuestionById(string id)
+		{
+			QuestionServiceModel question = await this.context.Questions.To<QuestionServiceModel>()
+				.SingleOrDefaultAsync(a => a.Id == id);
+
+			return question;
+		}
+
+		public async Task<bool> Delete(string id)
+		{
+			Question questionFromDb = await this.context.Questions.SingleOrDefaultAsync(a => a.Id == id);
+
+			if (questionFromDb == null)
+			{
+				throw new ArgumentNullException(nameof(questionFromDb));
+			}
+
+			this.context.Questions.Remove(questionFromDb);
+			int result = await this.context.SaveChangesAsync();
+
+			return result > 0;
 		}
 	}
 }

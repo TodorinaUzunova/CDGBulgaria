@@ -12,5 +12,9 @@ namespace CDGBulgaria.Services.Contracts
 		IQueryable<QuestionServiceModel> GetAllQuestions();
 
 		Task<bool> Create(QuestionServiceModel serviceModel);
+
+		Task<QuestionServiceModel> GetQuestionById(string id);
+
+		Task<bool> Delete(string id);
 	}
 }
