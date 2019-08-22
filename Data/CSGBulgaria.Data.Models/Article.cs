@@ -16,14 +16,14 @@ namespace CDGBulgaria.Data.Models
 		public string Id { get; set; }
 
 		[Required]
-		[MaxLength(50)]
+		[MaxLength(80)]
 		public string Title { get; set; }
 
 		[Required]
 		public string Content { get; set; }
 
 		[NotMapped]
-		public string Summary => this.Content.Substring(0, 100) +"...";
+		public string Summary => this.Content.Substring(0, 100) + "...";
 
 		[Required]
 		public DateTime CreatedOn { get; set; }

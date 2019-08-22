@@ -8,6 +8,8 @@ namespace CDGBulgaria.Data.Models
 {
 	public class CDGUser : IdentityUser<string>
 	{
+		[Required]
+		[MaxLength(80)]
 		public string FullName { get; set; }	
 	
 	}

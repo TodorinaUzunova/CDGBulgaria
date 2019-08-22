@@ -24,7 +24,6 @@ namespace CDGBulgaria.Data.Models
 		[Required]
 		public string QuestionId { get; set; }
 
-	
 		public Question Question { get; set; }
 
 	}

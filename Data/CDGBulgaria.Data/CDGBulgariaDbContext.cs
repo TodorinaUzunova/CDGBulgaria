@@ -31,18 +31,21 @@ namespace CDGBulgaria.Data
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
+
+			//builder.Entity<Question>()
+			//	.HasMany(q => q.Answers)
+			//	.WithOne(a => a.Question)
+			//	.HasForeignKey(a=>a.QuestionId)
+			//	.OnDelete(DeleteBehavior.Cascade);
+
+			//builder.Entity<Answer>()
+			//	.HasOne(a => a.Question)
+			//	.WithMany(q=>q.Answers)
+			//	.HasForeignKey(a=>a.QuestionId)
+			//	.OnDelete(DeleteBehavior.Restrict);
 				
 				
 			base.OnModelCreating(builder);
 		}
-
-		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		//{
-		//	optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS; Database = CDGBulgariaDB; Trusted_Connection = True;");
-
-		//	base.OnConfiguring(optionsBuilder);
-		//}
-
-		
 	}
 }
