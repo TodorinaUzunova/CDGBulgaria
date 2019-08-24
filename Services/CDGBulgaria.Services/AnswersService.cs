@@ -18,7 +18,7 @@ namespace CDGBulgaria.Services
 	public class AnswersService : IAnswersService
 	{
 		private readonly CDGBulgariaDbContext context;
-	
+
 
 		public AnswersService(CDGBulgariaDbContext context)
 		{
@@ -26,9 +26,9 @@ namespace CDGBulgaria.Services
 		}
 		public async Task<bool> CreateAnswer(AnswerServiceModel answerServiceModel)
 		{
-			Question questionFromDb = await context.Questions.SingleOrDefaultAsync(q =>q.Content ==answerServiceModel.Question.Content);
+			Question questionFromDb = await context.Questions.SingleOrDefaultAsync(q => q.Content == answerServiceModel.Question.Content);
 
-			if (questionFromDb==null)
+			if (questionFromDb == null)
 			{
 				throw new ArgumentNullException(nameof(questionFromDb));
 			}
@@ -42,13 +42,13 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
-		public  IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
+		public IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
 		{
-		     var answersForAQuestion = this.context.Answers.Include(a=>a.Question).Where(a=>a.QuestionId==id)
-				.To<AnswerServiceModel>();
+			var answersForAQuestion = this.context.Answers.Include(a => a.Question).Where(a => a.QuestionId == id)
+			   .To<AnswerServiceModel>();
 
 			return answersForAQuestion;
-				 
+
 		}
 	}
 }

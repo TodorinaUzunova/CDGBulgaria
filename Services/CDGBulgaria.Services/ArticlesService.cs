@@ -7,6 +7,7 @@ using CDGBulgaria.Services.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -66,8 +67,7 @@ namespace CDGBulgaria.Services
 
 			articleFromDb.Title = articleServiceModel.Title;
 			articleFromDb.Content = articleServiceModel.Content;
-			articleFromDb.Author.FullName = articleServiceModel.Author.FullName;
-			
+		
 
 			this.context.Articles.Update(articleFromDb);
 			int result = await this.context.SaveChangesAsync();
@@ -115,14 +115,18 @@ namespace CDGBulgaria.Services
 
 		private IQueryable<Article> GetAllArticlesByDateCreatedOnAscending()
 		{
-			return this.context.Articles.OrderBy(article => article.CreatedOn);
+			return this.context.Articles.OrderByDescending(article => article.CreatedOn);
 		}
 
 		private IQueryable<Article> GetAllArticlesByDateCreatedOnDescending()
 		{
-			return this.context.Articles.OrderByDescending(article => article.CreatedOn);
+			return this.context.Articles.OrderBy(article => article.CreatedOn);
 		}
 
+		public IEnumerable<string> GetAllArticlesAuthorsFullnames()
+		{
+			return this.context.Articles.Include(ar=>ar.Author).Select(au => au.Author.FullName).ToList();
+		}
 	}
 }
 

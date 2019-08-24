@@ -55,19 +55,22 @@ namespace CDGBulgaria.Services
 			return question;
 		}
 
-		public async Task<bool> Delete(string id)
-		{
-			Question questionFromDb = await this.context.Questions.SingleOrDefaultAsync(a => a.Id == id);
+		//public async Task<bool> Delete(string id)
+		//{
+		//	Question questionFromDb = await this.context.Questions.SingleOrDefaultAsync(a => a.Id == id);
 
-			if (questionFromDb == null)
-			{
-				throw new ArgumentNullException(nameof(questionFromDb));
-			}
+		//	if (questionFromDb == null)
+		//	{
+		//		throw new ArgumentNullException(nameof(questionFromDb));
+		//	}
 
-			this.context.Questions.Remove(questionFromDb);
-			int result = await this.context.SaveChangesAsync();
-
-			return result > 0;
-		}
+		//	if (questionFromDb.Answers.Count==0)
+		//	{
+		//		this.context.Questions.Remove(questionFromDb);
+		//	}
+			
+		//	int result = await this.context.SaveChangesAsync();
+		//	return result > 0;
+		//}
 	}
 }

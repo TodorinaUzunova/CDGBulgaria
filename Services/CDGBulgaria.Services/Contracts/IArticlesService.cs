@@ -21,6 +21,8 @@ namespace CDGBulgaria.Services.Contracts
 
 		Task<bool> Delete(string id);
 
+		IEnumerable<string> GetAllArticlesAuthorsFullnames();
+
 
 	}
 }

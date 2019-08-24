@@ -15,6 +15,6 @@ namespace CDGBulgaria.Services.Contracts
 
 		Task<QuestionServiceModel> GetQuestionById(string id);
 
-		Task<bool> Delete(string id);
+		//Task<bool> Delete(string id);
 	}
 }
