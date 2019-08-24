@@ -1,0 +1,36 @@
+﻿@using CDGBulgaria.Web.ViewModels.Answer
+@model CDGBulgaria.Web.ViewModels.Question.QuestionDeleteViewModel
+
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="text-info text-center">Delete</h1>
+<hr class="hr-2 bg-primary w-50">
+<form class="mx-auto width w-50" asp-method="post" asp-action="Delete">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group text-info">
+		<label asp-for="Content" class="control-label">Content</label>
+		<textarea asp-for="Content" class="form-control" placeholder="Content..." disabled></textarea>
+		<span asp-validation-for="Content" class="text-danger"></span>
+	</div>
+	<div class="form-group text-info">
+		<input type="hidden" asp-for="CreatedOn" class="form-control" disabled />
+		<span asp-validation-for="CreatedOn" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<input type="hidden" asp-for="AuthorId" class="form-control" disabled />
+		<span asp-validation-for="AuthorId" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<input type="hidden" asp-for="AuthorUserName" class="form-control" disabled />
+		<span asp-validation-for="AuthorUserName" class="text-danger"></span>
+	</div>
+	<hr class="hr-2 bg-primary">
+	<div class="form-group text-center">
+		<button type="submit" value="Delete" class="btn  btn-danger font-weight-bold">Delete Question</button>
+	</div>
+</form>

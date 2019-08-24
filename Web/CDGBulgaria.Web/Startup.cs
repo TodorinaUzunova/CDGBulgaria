@@ -78,6 +78,7 @@ namespace CDGBulgaria.Web
 			services.AddTransient<IFactsService, FactsService>();
 			services.AddTransient<IAnswersService, AnswersService>();
 			services.AddTransient<IDiseasesService, DiseasesService>();
+			services.AddTransient<IUsersService, UsersService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}

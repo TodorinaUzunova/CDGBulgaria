@@ -1,4 +1,6 @@
 ﻿@model List<CDGBulgaria.Web.ViewModels.Article.ArticleViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 
 @{
 	ViewData["Title"] = "All";
@@ -20,7 +22,7 @@
 	</div>
 	<div id="sort-holder" class="form-group w-40 d-flex justify-content-between">
 		<label for="sort" class="text-primary font-weight-bold w-30 h4 mt-1 text-right">Order By: </label>
-		<form id="order-form"  action="/Articles/All" method="get">
+		<form id="order-form" action="/Articles/All" method="get">
 			<select id="sort" class="form-control text-primary pl-2 ml-3 w-70" name="criteria">
 				@if (this.ViewData["criteria"] == null)
 				{
@@ -51,58 +53,62 @@
 
 	@for (int i = 0; i < Model.Count(); i += 4)
 	{
-	<div class="articles-row row d-flex justify-content-around my-3">
-		@for (int j = i; j < i + 4; j++)
-		{
-			if (j < Model.Count())
+		<div class="articles-row row d-flex justify-content-around my-3">
+			@for (int j = i; j < i + 4; j++)
 			{
-	
-		<div class="article col-md-3">
-			<hr class="hr-2 bg-primary">
-			<h4 class="text-center text-danger">@Model[j].Title</h4>
-			<p>
-				@Model[j].Summary
-			</p>
+				if (j < Model.Count())
+				{
 
-			<h6 class="text-info">Created by: @Model[j].AuthorFullName</h6>
+					<div class="article col-md-3">
+						<hr class="hr-2 bg-primary">
+						<h4 class="text-center text-danger">@Model[j].Title</h4>
+						<p>
+							@Model[j].Summary
+						</p>
 
-			<p>@Model[j].CreatedOn</p>
-			<div id="navigation-holder" class="mt-4 d-flex justify-content-center">
+						<h6 class="text-info">Created by: @Model[j].AuthorFullName</h6>
 
-				<a href="/Articles/Details/@Model[j].Id" class="btn btn-primary text-white font-weight-bold">Read More</a>
-			</div>
-			<hr class="hr-2 bg-primary">
+						<p>@Model[j].CreatedOn</p>
+						<div id="navigation-holder" class="mt-4 d-flex justify-content-center">
 
+							<a href="/Articles/Details/@Model[j].Id" class="btn btn-primary text-white font-weight-bold">Read More</a>
+						</div>
+						<hr class="hr-2 bg-primary">
+
+					</div>
+				}
+				else
+				{
+					<div class="article col-md-2 empty">
+					</div>
+				}
+			}
 		</div>
-			}
-			else
-			{
-				<div class="article col-md-2 empty">
-				</div>
-			}
-		}
-	</div>
 	}
 </div>
 
+<div>
+	@await Component.InvokeAsync("ArticlesUsers")
+</div>
+
 <script>
-        $('#sort').change(function () {
-            $('#order-form').submit();
-        });
+	$('#sort').change(function () {
+		$('#order-form').submit();
+	});
 
-        $('#articles-search-bar').on("change paste keyup", function () {
-            $('.article').show();
+	$('#articles-search-bar').on("change paste keyup", function () {
+		$('.article').show();
 
-            let searchValue = $('#articles-search-bar').val();
+		let searchValue = $('#articles-search-bar').val();
 
-            for (let elem of $('.article')) {
-                let articleName = $($(elem).children()[1]).text();
+		for (let elem of $('.article')) {
+			let articleName = $($(elem).children()[1]).text();
 
-                if (!articleName.toLowerCase().includes(searchValue.toLowerCase())) {
-                    $(elem).hide();
-                }
-            }
-        });
+			if (!articleName.toLowerCase().includes(searchValue.toLowerCase())) {
+				$(elem).hide();
+			}
+		}
+	});
 </script>
 
 

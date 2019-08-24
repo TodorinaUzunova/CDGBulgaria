@@ -25,19 +25,19 @@ namespace CDGBulgaria.Services
 
 			byte[] destinationData;
 
-			using (var ms=new MemoryStream())
+			using (var ms = new MemoryStream())
 			{
 				await file.CopyToAsync(ms);
 				destinationData = ms.ToArray();
 			}
 			UploadResult uploadResult = null;
 
-			using (var ms=new MemoryStream(destinationData))
+			using (var ms = new MemoryStream(destinationData))
 			{
 				ImageUploadParams uploadParams = new ImageUploadParams
-					{
-					Folder="",//folder name in Cloudinary
-					File=new FileDescription(fileName, ms),
+				{
+					Folder = "CDG Library",//folder name in Cloudinary
+					File = new FileDescription(fileName, ms),
 				};
 
 				uploadResult = this.cloudinaryUtility.Upload(uploadParams);

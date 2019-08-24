@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using CDGBulgaria.Web.Areas.Adminstration.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using CDGBulgaria.Services.Contracts;
-using CDGBulgaria.Web.InputModels.CDGDisease;
 using CDGBulgaria.Services.Mapping;
 using Microsoft.AspNetCore.Authorization;
+using CDGBulgaria.Web.ViewModels.CDGDisease;
+using CDGBulgaria.Web.InputModels.CDGDisease;
 
 namespace CDGBulgaria.Web.Areas.Administration.Controllers
 {
-    public class DiseasesController : AdminController
-    {
+	public class DiseasesController : AdminController
+	{
 		private readonly IDiseasesService diseasesService;
 
 		public DiseasesController(IDiseasesService diseasesService)
@@ -21,22 +22,22 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		}
 
 		[Authorize]
-        public async Task<IActionResult> Create(CDGDiseaseCreateInputModel cdgDiseaseCreateInputModel)
-        {
+		public async Task<IActionResult> Create(CDGDiseaseCreateInputModel cdgDiseaseCreateInputModel)
+		{
 			if (!this.ModelState.IsValid)
 			{
 				return this.View(cdgDiseaseCreateInputModel);
 			}
 
-			CDGDiseaseServiceModel cdgDiseaseServiceModel =cdgDiseaseCreateInputModel.To<CDGDiseaseServiceModel>();
+			CDGDiseaseServiceModel cdgDiseaseServiceModel = cdgDiseaseCreateInputModel.To<CDGDiseaseServiceModel>();
 			await this.diseasesService.CreateDisease(cdgDiseaseServiceModel);
 			return this.Redirect("/Diseases/All");
-        }
+		}
 
 		[HttpGet(Name = "Edit")]
 		public async Task<IActionResult> Edit(int id)
 		{
-		    CDGDiseaseEditInputModel cdgDiseaseEditInputModel = (await this.diseasesService.GetCDGDiseaseById(id)).To<CDGDiseaseEditInputModel>();
+			CDGDiseaseEditInputModel cdgDiseaseEditInputModel = (await this.diseasesService.GetCDGDiseaseById(id)).To<CDGDiseaseEditInputModel>();
 
 			if (cdgDiseaseEditInputModel == null)
 			{
@@ -49,13 +50,13 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		[HttpPost(Name = "Edit")]
 		public async Task<IActionResult> Edit(int id, CDGDiseaseEditInputModel diseaseEditInputModel)
 		{
-			
+
 			if (!this.ModelState.IsValid)
 			{
 				return this.View(diseaseEditInputModel);
 			}
 
-		    CDGDiseaseServiceModel diseaseServiceModel = diseaseEditInputModel.To<CDGDiseaseServiceModel>();
+			CDGDiseaseServiceModel diseaseServiceModel = diseaseEditInputModel.To<CDGDiseaseServiceModel>();
 
 			await this.diseasesService.Edit(id, diseaseServiceModel);
 
@@ -65,7 +66,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		[HttpGet(Name = "Delete")]
 		public async Task<IActionResult> Delete(int id)
 		{
-			
+
 			CDGDiseaseDeleteModel cdgDiseaseDeleteViewModel = (await this.diseasesService.GetCDGDiseaseById(id)).To<CDGDiseaseDeleteModel>();
 
 			if (cdgDiseaseDeleteViewModel == null)

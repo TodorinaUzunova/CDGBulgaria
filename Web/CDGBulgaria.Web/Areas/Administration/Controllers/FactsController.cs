@@ -12,8 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CDGBulgaria.Web.Areas.Administration.Controllers
 {
-    public class FactsController : AdminController
-    {
+	public class FactsController : AdminController
+	{
 		private readonly IFactsService factsService;
 		private readonly ICloudinaryService cloudinaryService;
 
@@ -44,9 +44,9 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 			FactServiceModel factServiceModel = new FactServiceModel()
 			{
-				Id=factCreateInputModel.Id,
-				Content=factCreateInputModel.Content,
-				PdfFile=fileUrl,
+				Id = factCreateInputModel.Id,
+				Content = factCreateInputModel.Content,
+				PdfFile = fileUrl,
 			};
 
 			await this.factsService.Create(factServiceModel);

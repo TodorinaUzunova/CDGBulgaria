@@ -49,7 +49,11 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				return this.View(articleEditInputModel);
 			}
 
-		ArticleServiceModel articleServiceModel = articleEditInputModel.To<ArticleServiceModel>();
+			ArticleServiceModel articleServiceModel = new ArticleServiceModel()
+			{
+				Title = articleEditInputModel.Title,
+				Content = articleEditInputModel.Content
+			};
 
 			await this.articlesService.Edit(id, articleServiceModel);
 			return this.Redirect("/Articles/All");

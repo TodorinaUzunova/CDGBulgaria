@@ -42,7 +42,7 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage ="Username is required")]
             [Display(Name = "Username")]
             public string Username { get; set; }
 
@@ -55,12 +55,12 @@ namespace CDGBulgaria.Web.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-			[Required]
+			[Required(ErrorMessage = "Email is required")]
 			[EmailAddress]
 			[Display(Name = "Email")]
 			public string Email { get; set; }
 
-			[Required]
+			[Required(ErrorMessage = "FullName is required")]
 			[Display(Name = "FullName")]
 			public string FullName  { get; set; }
 		}
