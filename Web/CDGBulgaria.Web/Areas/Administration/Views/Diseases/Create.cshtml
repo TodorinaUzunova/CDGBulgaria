@@ -11,8 +11,8 @@
 <form class="mx-auto width w-50" asp-action="Create">
 	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 	<div class="form-group">
-		<label asp-for="Name" class="control-label text-primary" ></label>
-		<input asp-for="Name" class="form-control" placeholder="Name..."/>
+		<label asp-for="Name" class="control-label text-primary"></label>
+		<input asp-for="Name" class="form-control" placeholder="Name..." />
 		<span asp-validation-for="Name" class="text-danger"></span>
 	</div>
 	<div class="form-group">
@@ -26,4 +26,7 @@
 	</div>
 </form>
 
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
 

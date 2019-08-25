@@ -8,7 +8,6 @@ namespace CDGBulgaria.Web.ViewModels.Fact
 {
 	public class FactViewModel:IMapFrom<FactServiceModel>
 	{
-		public int Id { get; set; }
 
 		public string Content{ get; set; }
 

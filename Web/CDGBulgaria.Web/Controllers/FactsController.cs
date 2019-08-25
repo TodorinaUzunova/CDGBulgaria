@@ -24,7 +24,6 @@ namespace CDGBulgaria.Web.Controllers
 			var facts = await this.factsService.GetAllFacts()
 				.Select(fact => new FactViewModel
 				{
-					Id=fact.Id,
 					Content=fact.Content,
 					PdfFile=fact.PdfFile
 				})

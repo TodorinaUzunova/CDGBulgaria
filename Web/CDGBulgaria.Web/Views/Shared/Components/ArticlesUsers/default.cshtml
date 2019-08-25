@@ -1,0 +1,9 @@
+﻿@model  CDGBulgaria.Web.ViewComponents.ArticlesUsersViewComponentViewModel
+
+<h5>
+	All colleagues, who have worked on the articles are:
+</h5>
+	@foreach (var user in Model.Users)
+	{
+		<span style="color:indigo; font-weight:400">@user,</span>	
+	}

@@ -24,7 +24,7 @@ namespace CDGBulgariaTests.Service
 
 		public EventsServiceTests()
 		{
-			MapperInitializer.InitializeMapper(); 
+			MapperInitializer.InitializeMapper();
 		}
 		private List<Event> GetInitialData()
 		{
@@ -54,7 +54,7 @@ namespace CDGBulgariaTests.Service
 		[Fact]
 		public async Task GetAllEvents_WithInitialData_ShouldReturnCorrectResult()
 		{
-			
+
 			string errorMessagePrefix = "EventsService Method GetAllEvents() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
@@ -72,18 +72,18 @@ namespace CDGBulgariaTests.Service
 				var expectedEntry = expectedResults[i];
 				var actualEntry = actualResults[i];
 
-				Assert.True(expectedEntry.Name==actualEntry.Name, errorMessagePrefix + " " + "Name is not returned properly");
+				Assert.True(expectedEntry.Name == actualEntry.Name, errorMessagePrefix + " " + "Name is not returned properly");
 				Assert.True(expectedEntry.Venue == actualEntry.Venue, errorMessagePrefix + " " + "Venue is not returned properly");
 				Assert.True(expectedEntry.Start.ToString("dd/MM/yyyy") == actualEntry.Start.ToString("dd/MM/yyyy"), errorMessagePrefix + " " + "StartDate is not returned properly");
 				Assert.True(expectedEntry.MoreInfo == actualEntry.MoreInfo, errorMessagePrefix + " " + "MoreInfo is not returned properly");
 			}
-			
+
 		}
 
 		[Fact]
 		public async Task GetAllEvents_WithZeroData_ShouldReturnEmptyResult()
 		{
-			
+
 			string errorMessagePrefix = "EventsService Method GetAllEvents() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
@@ -92,8 +92,8 @@ namespace CDGBulgariaTests.Service
 
 			List<EventServiceModel> actualResults = await this.eventsService.GetAllEvents().ToListAsync();
 
-				Assert.True(actualResults.Count==0, errorMessagePrefix);
-				
+			Assert.True(actualResults.Count == 0, errorMessagePrefix);
+
 		}
 
 		[Fact]
@@ -110,7 +110,7 @@ namespace CDGBulgariaTests.Service
 			{
 				Name = "CDGHealthMeeting",
 				Venue = "Sofia",
-				Start = DateTime.ParseExact("05/03/2019 14:00", "mm/dd/yyyy HH:mm:ss" ,CultureInfo.InvariantCulture),
+				Start = DateTime.ParseExact("05/03/2019 14:00", "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture),
 				MoreInfo = "src/pics/something/sofia.pdf"
 			};
 

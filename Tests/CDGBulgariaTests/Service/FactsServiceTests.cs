@@ -57,9 +57,9 @@ namespace CDGBulgariaTests.Service
 
 			this.factsService = new FactsService(context);
 
-		List<FactServiceModel> actualResults = await this.factsService.GetAllFacts().ToListAsync();
+			List<FactServiceModel> actualResults = await this.factsService.GetAllFacts().ToListAsync();
 
-		List<FactServiceModel> expectedResults = GetInitialData().To<FactServiceModel>().ToList();
+			List<FactServiceModel> expectedResults = GetInitialData().To<FactServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -100,7 +100,7 @@ namespace CDGBulgariaTests.Service
 
 			FactServiceModel factus = new FactServiceModel()
 			{
-				Content="There are not yet found medicines for this desease.",
+				Content = "There are not yet found medicines for this desease.",
 				PdfFile = "src/pics/something/sofia.pdf"
 			};
 

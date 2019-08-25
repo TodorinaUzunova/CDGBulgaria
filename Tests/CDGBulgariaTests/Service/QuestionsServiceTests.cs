@@ -32,11 +32,12 @@ namespace CDGBulgariaTests.Service
 			return new List<Question> {
 				new Question {
 					Content="Is this is a new kind of rare desease?",
-					Author= new CDGUser{UserName="pesho" },
+					AuthorId= "pesho1234" ,
+					
 				  },
 				new Question {
 					Content="What happens, when the children have this desease?",
-					Author= new CDGUser{UserName="todor" },
+					AuthorId= "trahn567yu"
 				  },
 			};
 		}
@@ -69,7 +70,7 @@ namespace CDGBulgariaTests.Service
 				var actualEntry = actualResults[i];
 
 				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
-				Assert.True(expectedEntry.Author.UserName == actualEntry.Author.UserName, errorMessagePrefix + " " + "AuthorUserName is not returned properly");
+				Assert.True(expectedEntry.Author.UserName == actualEntry.Author.UserName, errorMessagePrefix + " " + "AuthorUsername is not returned properly");
 			}
 
 		}
@@ -101,7 +102,7 @@ namespace CDGBulgariaTests.Service
 		 QuestionServiceModel questionModel= new QuestionServiceModel()
 			{
 				Content = "Are there really found medicines for this desease?",
-				Author= new CDGUserServiceModel { UserName = "pesho" },
+				AuthorId= "trahjgtss123",
 				CreatedOn= DateTime.Parse("10/07/2019 10:30"),
 			};
 			

@@ -27,14 +27,15 @@ namespace CDGBulgariaTests.Service
 			return new List<Answer> {
 				new Answer {
 					Content="Sofia is the place with a lot of specialized doctors for this diseases.",
-					Question=new Question{ Content="How can be sure it is CDG?", Id="trtsjjsch567jscj"},
-					Author= new CDGUser{UserName="Stancheva-Ivanova " },
+					QuestionId ="4362hdbhbsc" ,
+					AuthorId= "1234567fvfgfgh" ,
 
 				  },
 				new Answer {
 					Content="The are not so much written materials for this diseases.",
-					Question=new Question{Content="Is there enough information about the disease?", Id="fgrt564fdf"},
-					Author= new CDGUser{UserName="Ivan Ivanov" }
+					QuestionId ="436sddds2hdbhbsc" ,
+					AuthorId= "3456cs7fvfgfgh" ,
+
 				  },
 			};
 		}
@@ -60,8 +61,8 @@ namespace CDGBulgariaTests.Service
 			AnswerServiceModel answerServiceModel = new AnswerServiceModel()
 			{
 				Content = "Sofia is the place, where the association is founded.",
-				Question = new QuestionServiceModel { Id = "2er5dbvxzaaxax", Content = "Where is the association founded?" },
-				Author = new CDGUserServiceModel { UserName = "Petkov" }
+				QuestionId =  "2er5dbvxzaaxax",
+				AuthorId = "hbshb5678"
 			};
 
 			bool actualResult = await this.answersService.CreateAnswer(answerServiceModel);
@@ -92,7 +93,7 @@ namespace CDGBulgariaTests.Service
 
 				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + " Content is not returned properly");
 				Assert.True(expectedEntry.QuestionId == actualEntry.QuestionId, errorMessagePrefix + " " + "QuestionId is not returned properly");
-				Assert.True(expectedEntry.Author.UserName == actualEntry.Author.UserName, errorMessagePrefix + " " + "AuthorUsername is not returned properly");
+				Assert.True(expectedEntry.AuthorId == actualEntry.AuthorId, errorMessagePrefix + " " + "AuthorId is not returned properly");
 			}
 		}
 

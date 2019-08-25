@@ -54,7 +54,7 @@ namespace CDGBulgariaTests.Service
 
 			await SeedData(context);
 
-			
+
 			this.diseasesService = new DiseasesService(context);
 
 
@@ -67,7 +67,7 @@ namespace CDGBulgariaTests.Service
 				var expectedEntry = expectedResults[i];
 				var actualEntry = actualResults[i];
 
-				Assert.True(expectedEntry.Name== actualEntry.Name, errorMessagePrefix + " " + "Name is not returned properly");
+				Assert.True(expectedEntry.Name == actualEntry.Name, errorMessagePrefix + " " + "Name is not returned properly");
 				Assert.True(expectedEntry.Description == actualEntry.Description, errorMessagePrefix + " " + "Description is not returned properly");
 			}
 
@@ -101,8 +101,8 @@ namespace CDGBulgariaTests.Service
 
 			CDGDiseaseServiceModel diseaseServiceModel = new CDGDiseaseServiceModel()
 			{
-				Name="PMM3",
-				Description="The next disease from this row of diseases"
+				Name = "PMM3",
+				Description = "The next disease from this row of diseases"
 			};
 
 			bool actualResult = await this.diseasesService.CreateDisease(diseaseServiceModel);
@@ -176,7 +176,7 @@ namespace CDGBulgariaTests.Service
 
 		[Fact]
 		public async Task Edit_WithGivenNonExistenId_ShouldThrowArgumentNullException()
-		{ 
+		{
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
@@ -187,7 +187,7 @@ namespace CDGBulgariaTests.Service
 
 			expectedData.Name = "Edited Name";
 			expectedData.Description = "Edited Description";
-		
+
 			await this.diseasesService.Edit(expectedData.Id, expectedData);
 
 			await Assert.ThrowsAsync<ArgumentNullException>(() => this.diseasesService.Edit(205, expectedData));
