@@ -39,10 +39,9 @@ namespace CDGBulgaria.Services
 				Title = serviceModel.Title,
 				Content = serviceModel.Content,
 				CreatedOn = DateTime.UtcNow, 
-				Author=author,
-				AuthorId=author.Id,
 			};
 
+			article.Author = author;
 			await this.context.Articles.AddAsync(article);
 			int result = await this.context.SaveChangesAsync();
 			return result > 0;

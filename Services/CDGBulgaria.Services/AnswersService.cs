@@ -26,17 +26,21 @@ namespace CDGBulgaria.Services
 		}
 		public async Task<bool> CreateAnswer(AnswerServiceModel answerServiceModel)
 		{
-			Question questionFromDb = await context.Questions.SingleOrDefaultAsync(q => q.Content == answerServiceModel.Question.Content);
+			Question questionFromDb = await context.Questions.SingleOrDefaultAsync(q => q.Content== answerServiceModel.Question.Content);
+			
 
 			if (questionFromDb == null)
 			{
 				throw new ArgumentNullException(nameof(questionFromDb));
+	
 			}
 
 			Answer answer = AutoMapper.Mapper.Map<Answer>(answerServiceModel);
 
 			answer.Question = questionFromDb;
-			//answer.QuestionId = questionFromDb.Id;
+			answer.QuestionId = questionFromDb.Id;
+
+
 			await this.context.Answers.AddAsync(answer);
 			int result = await this.context.SaveChangesAsync();
 			return result > 0;

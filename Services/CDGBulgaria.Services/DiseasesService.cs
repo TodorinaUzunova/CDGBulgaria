@@ -2,6 +2,7 @@
 using CDGBulgaria.Data;
 using CDGBulgaria.Data.Models;
 using CDGBulgaria.Services.Contracts;
+using CDGBulgaria.Services.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,16 +22,20 @@ namespace CDGBulgaria.Services
 		}
 		public async Task<bool> CreateDisease(CDGDiseaseServiceModel cdgDiseaseServiceModel)
 		{
+
 			CDGDisease  disease=new CDGDisease()
 			{
 				Name=cdgDiseaseServiceModel.Name,
-				Description=cdgDiseaseServiceModel.Description
+				Description=cdgDiseaseServiceModel.Description,
+				
 			};
 			await this.context.CDGDiseases.AddAsync(disease);
 
 			int result = await this.context.SaveChangesAsync();
 			return result > 0;
 		}
+
+		
 
 		public async Task<bool> Delete(int id)
 		{
@@ -49,6 +54,8 @@ namespace CDGBulgaria.Services
 
 		public async Task<bool> Edit(int id, CDGDiseaseServiceModel diseaseServiceModel)
 		{
+	
+
 		    CDGDisease diseaseFromDb = await this.context.CDGDiseases.SingleOrDefaultAsync(d => d.Id == id);
 
 			if (diseaseFromDb == null)
@@ -71,6 +78,7 @@ namespace CDGBulgaria.Services
 
 			return cdgDiseases;
 		}
+
 
 		public async  Task<CDGDiseaseServiceModel> GetCDGDiseaseById(int id)
 		{

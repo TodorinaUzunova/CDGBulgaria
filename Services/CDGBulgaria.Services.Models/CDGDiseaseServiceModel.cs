@@ -1,5 +1,6 @@
 ﻿using AspNetCoreTemplate.Services.Mapping;
 using CDGBulgaria.Data.Models;
+using CDGBulgaria.Services.Models;
 
 namespace CDGBulgaria.Services.Contracts
 {
@@ -10,5 +11,7 @@ namespace CDGBulgaria.Services.Contracts
 		public string Name { get; set; }
 
 		public string Description { get; set; }
+
+		
 	}
 }

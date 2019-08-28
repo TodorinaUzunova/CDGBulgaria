@@ -26,13 +26,14 @@ namespace CDGBulgaria.Services
 
 		public async Task<bool> Create(QuestionServiceModel questionServiceModel)
 		{
-		
+			CDGUser author = await this.context.Users.SingleOrDefaultAsync(u => u.Id == questionServiceModel.AuthorId);
+
 			Question question = new Question
 			{
 				Content = questionServiceModel.Content,
 				CreatedOn=questionServiceModel.CreatedOn,
-				AuthorId=questionServiceModel.AuthorId,
-			}; 
+			};
+			question.Author = author;
 
 			await this.context.Questions.AddAsync(question);
 			int result = await this.context.SaveChangesAsync();
