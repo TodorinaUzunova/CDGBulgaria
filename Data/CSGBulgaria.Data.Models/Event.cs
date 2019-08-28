@@ -18,12 +18,12 @@ namespace CDGBulgaria.Data.Models
 		public string Id { get; set; }
 
 		[Required]
-		[MaxLength(200)]
+		[MaxLength(300)]
 		public string Name { get; set; }
 
 
 		[Required]
-		[MaxLength(100)]
+		[MaxLength(200)]
 		public string Venue { get; set; }
 
 		[Required]
