@@ -27,14 +27,11 @@ namespace CDGBulgariaTests.Service
 			return new List<Answer> {
 				new Answer {
 					Content="Sofia is the place with a lot of specialized doctors for this diseases.",
-					QuestionId ="4362hdbhbsc" ,
-					AuthorId= "1234567fvfgfgh" ,
-
-				  },
+					QuestionId = "4362hdbhbsc" ,
+				},
 				new Answer {
 					Content="The are not so much written materials for this diseases.",
 					QuestionId ="436sddds2hdbhbsc" ,
-					AuthorId= "3456cs7fvfgfgh" ,
 
 				  },
 			};
@@ -61,8 +58,7 @@ namespace CDGBulgariaTests.Service
 			AnswerServiceModel answerServiceModel = new AnswerServiceModel()
 			{
 				Content = "Sofia is the place, where the association is founded.",
-				QuestionId =  "2er5dbvxzaaxax",
-				AuthorId = "hbshb5678"
+				QuestionId="dfghrf3456"
 			};
 
 			bool actualResult = await this.answersService.CreateAnswer(answerServiceModel);

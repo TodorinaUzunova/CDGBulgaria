@@ -32,12 +32,10 @@ namespace CDGBulgariaTests.Service
 			return new List<Question> {
 				new Question {
 					Content="Is this is a new kind of rare desease?",
-					AuthorId= "pesho1234" ,
 					
 				  },
 				new Question {
 					Content="What happens, when the children have this desease?",
-					AuthorId= "trahn567yu"
 				  },
 			};
 		}

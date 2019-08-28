@@ -30,13 +30,12 @@ namespace CDGBulgariaTests.Service
 				new Article {
 					Title="CDGHealth",
 					Content="Sofia is the place with a lot of specialized doctors for this diseases.",
-					AuthorId= "tye5678shdx",
+					
 									
 				  },
 				new Article {
 					Title="CDG ressources",
 					Content="The are not so much written materials for this diseases.",
-					AuthorId= "dtbx67890rs",
 					
 				  },
 			};
@@ -72,7 +71,7 @@ namespace CDGBulgariaTests.Service
 
 				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
 				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
-				Assert.True(expectedEntry.AuthorId== actualEntry.AuthorId, errorMessagePrefix + " " + "AuthorId is not returned properly");
+				Assert.True(expectedEntry.Author.Id== actualEntry.Author.Id, errorMessagePrefix + " " + "AuthorId is not returned properly");
 				Assert.True(expectedEntry.Author.FullName == actualEntry.Author.FullName, errorMessagePrefix + " " + "AuthorFullName is not returned properly");
 			}
 
@@ -91,7 +90,7 @@ namespace CDGBulgariaTests.Service
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("authorname-a-to-z").ToListAsync();
 
-			List<ArticleServiceModel> expectedResults = GetInitialData().Select(a=>a.Author).OrderBy(a=>a.FullName.ToLower()).To<ArticleServiceModel>().ToList();
+			List<ArticleServiceModel> expectedResults = GetInitialData().Select(a => a.Author).OrderBy(a => a.FullName.ToLower()).To<ArticleServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -101,6 +100,91 @@ namespace CDGBulgariaTests.Service
 				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
 				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
 				Assert.True(expectedEntry.AuthorId == actualEntry.AuthorId, errorMessagePrefix + " " + "AuthorId is not returned properly");
+				Assert.True(expectedEntry.Author.FullName.ToLower() == actualEntry.Author.FullName.ToLower(), errorMessagePrefix + " " + "AuthorFullName is not returned properly");
+			}
+
+		}
+		[Fact]
+		public async Task GetAllArticles_WithInitialDataOrderedByAuthorNameDescending_ShouldReturnCorrectResult()
+		{
+			string errorMessagePrefix = "ArticlesService Method GetAllArticlesByAuthorNameDescending() does not work properly.";
+
+			var context = CDGBulgariaInmemoryFactory.InitializeContext();
+
+			await SeedData(context);
+
+			this.articlesService = new ArticlesService(context);
+
+
+			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("authorname-z-to-a").ToListAsync();
+
+			List<ArticleServiceModel> expectedResults = GetInitialData().Select(a => a.Author).OrderByDescending(a => a.FullName.ToLower()).To<ArticleServiceModel>().ToList();
+
+			for (int i = 0; i < expectedResults.Count; i++)
+			{
+				var expectedEntry = expectedResults[i];
+				var actualEntry = actualResults[i];
+
+				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
+				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
+				Assert.True(expectedEntry.Author.Id == actualEntry.Author.Id, errorMessagePrefix + " " + "AuthorId is not returned properly");
+				Assert.True(expectedEntry.Author.FullName.ToLower() == actualEntry.Author.FullName.ToLower(), errorMessagePrefix + " " + "AuthorFullName is not returned properly");
+			}
+
+		}
+		[Fact]
+		public async Task GetAllArticles_WithInitialDataOrderedByDateCreatedOnAscending_ShouldReturnCorrectResult()
+		{
+			string errorMessagePrefix = "ArticlesService Method GetAllArticlesOrderedByDateCreatedOnAscending() does not work properly.";
+
+			var context = CDGBulgariaInmemoryFactory.InitializeContext();
+
+			await SeedData(context);
+
+			this.articlesService = new ArticlesService(context);
+
+
+			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("date - oldest - to - newest").ToListAsync();
+
+			List<ArticleServiceModel> expectedResults = GetInitialData().OrderByDescending(a => a.CreatedOn).To<ArticleServiceModel>().ToList();
+
+			for (int i = 0; i < expectedResults.Count; i++)
+			{
+				var expectedEntry = expectedResults[i];
+				var actualEntry = actualResults[i];
+
+				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
+				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
+				Assert.True(expectedEntry.Author.Id == actualEntry.Author.Id, errorMessagePrefix + " " + "AuthorId is not returned properly");
+				Assert.True(expectedEntry.Author.FullName.ToLower() == actualEntry.Author.FullName.ToLower(), errorMessagePrefix + " " + "AuthorFullName is not returned properly");
+			}
+
+		}
+
+		[Fact]
+		public async Task GetAllArticles_WithInitialDataOrderedByDateCreatedOnDescending_ShouldReturnCorrectResult()
+		{
+			string errorMessagePrefix = "ArticlesService Method GetAllArticlesOrderedByDateCreatedOnDescending() does not work properly.";
+
+			var context = CDGBulgariaInmemoryFactory.InitializeContext();
+
+			await SeedData(context);
+
+			this.articlesService = new ArticlesService(context);
+
+
+			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("date - newest - to - oldest").ToListAsync();
+
+			List<ArticleServiceModel> expectedResults = GetInitialData().OrderBy(a => a.CreatedOn).To<ArticleServiceModel>().ToList();
+
+			for (int i = 0; i < expectedResults.Count; i++)
+			{
+				var expectedEntry = expectedResults[i];
+				var actualEntry = actualResults[i];
+
+				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
+				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
+				Assert.True(expectedEntry.Author.Id == actualEntry.Author.Id, errorMessagePrefix + " " + "AuthorId is not returned properly");
 				Assert.True(expectedEntry.Author.FullName.ToLower() == actualEntry.Author.FullName.ToLower(), errorMessagePrefix + " " + "AuthorFullName is not returned properly");
 			}
 
@@ -135,7 +219,6 @@ namespace CDGBulgariaTests.Service
 			{
 				Title = "CDGHealthMeeting",
 				Content = "Sofia is the place, where the association is founded.",
-				AuthorId = "23ehhd567ccd"
 			};
 
 			bool actualResult = await this.articlesService.CreateArticle(articleServiceModel);
