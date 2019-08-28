@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreTemplate.Services.Mapping;
 using CDGBulgaria.Services.Contracts;
-using CDGBulgaria.Web.ViewModels.Disease;
+using CDGBulgaria.Web.ViewModels.CDGDisease;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +29,10 @@ namespace CDGBulgaria.Web.Controllers
 			return View();
 		}
 
+		public async Task<IActionResult> Therapies()
+		{
+			return View();
+		}
 		public async Task<IActionResult> All()
 		{
 			var cdgDiseases= await this.diseasesService.GetAll()
@@ -36,7 +40,8 @@ namespace CDGBulgaria.Web.Controllers
 				{
 					Id=disease.Id,
 					Name=disease.Name,
-					Description=disease.Description
+					Description=disease.Description,
+
 				}).ToListAsync();
 
 			return View(cdgDiseases);

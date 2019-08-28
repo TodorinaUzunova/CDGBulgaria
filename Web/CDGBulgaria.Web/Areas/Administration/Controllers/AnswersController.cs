@@ -52,12 +52,13 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 				this.ViewData["questions"] = allQuestions.Select(question=>new AnswerCreateQuestionViewModel
 				{
-					Content=question.Content,
+					//Id = question.Id,
+					Content =question.Content,
 				});
 				return this.View(answerCreateInputModel);
 			}
 			string authorId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-			string author = this.User.FindFirst(ClaimTypes.Name).Value;
+			//string author = this.User.FindFirst(ClaimTypes.Name).Value;
 
 			AnswerServiceModel answerServiceModel = answerCreateInputModel.To<AnswerServiceModel>();
 			answerServiceModel.AuthorId = authorId;

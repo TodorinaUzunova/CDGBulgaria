@@ -1,4 +1,5 @@
-﻿@model CDGBulgaria.Web.InputModels.CDGDisease.CDGDiseaseCreateInputModel
+﻿@using CDGBulgaria.Web.ViewModels.CDGDisease
+@model CDGBulgaria.Web.InputModels.CDGDisease.CDGDiseaseCreateInputModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -19,7 +20,7 @@
 		<label asp-for="Description" class="control-label text-primary"></label>
 		<textarea asp-for="Description" class="form-control" placeholder="Description..."></textarea>
 		<span asp-validation-for="Description" class="text-danger"></span>
-	</div>
+	</div>		
 	<hr class="hr-2 bg-primary mt-4 text-center">
 	<div class="form-group text-center">
 		<input type="submit" value="Add" class="btn btn-primary" />
@@ -29,4 +30,3 @@
 @section Scripts {
 	<partial name="_ValidationScriptsPartial" />
 }
-

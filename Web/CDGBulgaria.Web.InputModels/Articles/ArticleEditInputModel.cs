@@ -12,7 +12,7 @@ namespace CDGBulgaria.Web.InputModels.Articles
 	{
 
 		[Required(ErrorMessage = "Title is required!")]
-		[StringLength(50)]
+		[StringLength(200)]
 		public string Title { get; set; }
 
 		[Required(ErrorMessage = "Content is required!")]

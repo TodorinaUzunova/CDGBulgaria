@@ -14,10 +14,12 @@ namespace CDGBulgaria.Web.InputModels.Event
 	{
 		[Required(ErrorMessage = "Name is required!")]
 		[Display(Name = "Username")]
+		[StringLength(300)]
 		public string Name { get; set; }
 
 		[Required(ErrorMessage = "Venue is required!")]
 		[Display(Name = "Venue")]
+		[StringLength(200)]
 		public string Venue { get; set; }
 
 		[Required(ErrorMessage = "Start is required!")]

@@ -11,7 +11,6 @@ namespace CDGBulgaria.Web.InputModels.Answer
 	public class AnswerCreateInputModel:IMapTo<AnswerServiceModel>, IHaveCustomMappings
 	{
 		[Required(ErrorMessage = "Content is required!")]
-		[MaxLength(800)]
 		public string Content { get; set; }
 
 

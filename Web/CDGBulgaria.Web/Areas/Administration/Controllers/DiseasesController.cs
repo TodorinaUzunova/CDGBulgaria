@@ -9,6 +9,9 @@ using CDGBulgaria.Services.Mapping;
 using Microsoft.AspNetCore.Authorization;
 using CDGBulgaria.Web.ViewModels.CDGDisease;
 using CDGBulgaria.Web.InputModels.CDGDisease;
+using CDGBulgaria.Services.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace CDGBulgaria.Web.Areas.Administration.Controllers
 {
@@ -21,18 +24,29 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 			this.diseasesService = diseasesService;
 		}
 
+		
 		[Authorize]
+		[HttpGet]
+		public async Task<IActionResult> Create()
+		{
+			return this.View();
+		}
+
+		[Authorize]
+		[HttpPost]
 		public async Task<IActionResult> Create(CDGDiseaseCreateInputModel cdgDiseaseCreateInputModel)
 		{
 			if (!this.ModelState.IsValid)
 			{
-				return this.View(cdgDiseaseCreateInputModel);
+				return this.View();
 			}
+			
 
 			CDGDiseaseServiceModel cdgDiseaseServiceModel = cdgDiseaseCreateInputModel.To<CDGDiseaseServiceModel>();
 			await this.diseasesService.CreateDisease(cdgDiseaseServiceModel);
 			return this.Redirect("/Diseases/All");
 		}
+
 
 		[HttpGet(Name = "Edit")]
 		public async Task<IActionResult> Edit(int id)
@@ -44,7 +58,9 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				return this.Redirect("/");
 				throw new ArgumentNullException(nameof(cdgDiseaseEditInputModel));
 			}
+
 			return this.View(cdgDiseaseEditInputModel);
+
 		}
 
 		[HttpPost(Name = "Edit")]
@@ -53,14 +69,14 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 			if (!this.ModelState.IsValid)
 			{
-				return this.View(diseaseEditInputModel);
+		        return this.View(diseaseEditInputModel);
 			}
 
 			CDGDiseaseServiceModel diseaseServiceModel = diseaseEditInputModel.To<CDGDiseaseServiceModel>();
 
 			await this.diseasesService.Edit(id, diseaseServiceModel);
 
-			return this.Redirect("/Diseases/All");
+			return this.Redirect("/");
 		}
 
 		[HttpGet(Name = "Delete")]
@@ -74,7 +90,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				return this.Redirect("/");
 				throw new ArgumentNullException(nameof(cdgDiseaseDeleteViewModel));
 			}
-
+			
 			return this.View(cdgDiseaseDeleteViewModel);
 		}
 

@@ -11,7 +11,7 @@ namespace CDGBulgaria.Web.InputModels.Articles
 	public class ArticleCreateInputModel : IMapTo<ArticleServiceModel>
 	{
 		[Required(ErrorMessage = "Title is required!")]
-		[StringLength(80)]
+		[StringLength(200)]
 		public string Title { get; set; }
 
 		[Required(ErrorMessage = "Content is required!")]
