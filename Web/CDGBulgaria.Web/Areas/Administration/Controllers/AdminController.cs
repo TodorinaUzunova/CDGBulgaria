@@ -9,6 +9,7 @@ namespace CDGBulgaria.Web.Areas.Adminstration.Controllers
 {
 	[Area("Administration")]
 	[Authorize(Roles = "Admin")]
+	[AutoValidateAntiforgeryToken]
 	public abstract class AdminController : Controller
     {
     }

@@ -30,13 +30,12 @@ namespace CDGBulgariaTests.Service
 				new Article {
 					Title="CDGHealth",
 					Content="Sofia is the place with a lot of specialized doctors for this diseases.",
-					
-									
+					CreatedOn=DateTime.UtcNow.AddMinutes(-20)
 				  },
 				new Article {
 					Title="CDG ressources",
 					Content="The are not so much written materials for this diseases.",
-					
+					CreatedOn=DateTime.UtcNow.AddMinutes(-30)
 				  },
 			};
 		}
@@ -62,7 +61,7 @@ namespace CDGBulgariaTests.Service
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles().ToListAsync();
 
-			List<ArticleServiceModel> expectedResults = GetInitialData().To<ArticleServiceModel>().ToList();
+			List<ArticleServiceModel> expectedResults = context.Articles.To<ArticleServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -90,7 +89,7 @@ namespace CDGBulgariaTests.Service
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("authorname-a-to-z").ToListAsync();
 
-			List<ArticleServiceModel> expectedResults = GetInitialData().Select(a => a.Author).OrderBy(a => a.FullName.ToLower()).To<ArticleServiceModel>().ToList();
+			List<ArticleServiceModel> expectedResults = context.Articles.OrderBy(a => a.Author.FullName.ToLower()).To<ArticleServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -118,7 +117,7 @@ namespace CDGBulgariaTests.Service
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("authorname-z-to-a").ToListAsync();
 
-			List<ArticleServiceModel> expectedResults = GetInitialData().Select(a => a.Author).OrderByDescending(a => a.FullName.ToLower()).To<ArticleServiceModel>().ToList();
+			List<ArticleServiceModel> expectedResults = context.Articles.Select(a => a.Author).OrderByDescending(a => a.FullName.ToLower()).To<ArticleServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -146,7 +145,7 @@ namespace CDGBulgariaTests.Service
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("date - oldest - to - newest").ToListAsync();
 
-			List<ArticleServiceModel> expectedResults = GetInitialData().OrderByDescending(a => a.CreatedOn).To<ArticleServiceModel>().ToList();
+			List<ArticleServiceModel> expectedResults = context.Articles.OrderBy(a => a.CreatedOn).To<ArticleServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -155,7 +154,7 @@ namespace CDGBulgariaTests.Service
 
 				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
 				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
-				Assert.True(expectedEntry.Author.Id == actualEntry.Author.Id, errorMessagePrefix + " " + "AuthorId is not returned properly");
+				Assert.True(expectedEntry.AuthorId == actualEntry.AuthorId, errorMessagePrefix + " " + "AuthorId is not returned properly");
 				Assert.True(expectedEntry.Author.FullName.ToLower() == actualEntry.Author.FullName.ToLower(), errorMessagePrefix + " " + "AuthorFullName is not returned properly");
 			}
 
@@ -175,7 +174,7 @@ namespace CDGBulgariaTests.Service
 
 			List<ArticleServiceModel> actualResults = await this.articlesService.GetAllArticles("date - newest - to - oldest").ToListAsync();
 
-			List<ArticleServiceModel> expectedResults = GetInitialData().OrderBy(a => a.CreatedOn).To<ArticleServiceModel>().ToList();
+			List<ArticleServiceModel> expectedResults = context.Articles.OrderByDescending(a => a.CreatedOn).To<ArticleServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -184,7 +183,7 @@ namespace CDGBulgariaTests.Service
 
 				Assert.True(expectedEntry.Title == actualEntry.Title, errorMessagePrefix + " " + "Title is not returned properly");
 				Assert.True(expectedEntry.Content == actualEntry.Content, errorMessagePrefix + " " + "Content is not returned properly");
-				Assert.True(expectedEntry.Author.Id == actualEntry.Author.Id, errorMessagePrefix + " " + "AuthorId is not returned properly");
+				Assert.True(expectedEntry.AuthorId == actualEntry.AuthorId, errorMessagePrefix + " " + "AuthorId is not returned properly");
 				Assert.True(expectedEntry.Author.FullName.ToLower() == actualEntry.Author.FullName.ToLower(), errorMessagePrefix + " " + "AuthorFullName is not returned properly");
 			}
 

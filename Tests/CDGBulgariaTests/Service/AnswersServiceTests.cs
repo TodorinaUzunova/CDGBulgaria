@@ -27,11 +27,9 @@ namespace CDGBulgariaTests.Service
 			return new List<Answer> {
 				new Answer {
 					Content="Sofia is the place with a lot of specialized doctors for this diseases.",
-					QuestionId = "4362hdbhbsc" ,
 				},
 				new Answer {
 					Content="The are not so much written materials for this diseases.",
-					QuestionId ="436sddds2hdbhbsc" ,
 
 				  },
 			};
@@ -52,14 +50,18 @@ namespace CDGBulgariaTests.Service
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
 
-			await SeedData(context);
-			this.answersService = new AnswersService(context);
+			context.Questions.Add(new Question());
+			string testQuestionId = context.Questions.First().Id;
+
 
 			AnswerServiceModel answerServiceModel = new AnswerServiceModel()
 			{
 				Content = "Sofia is the place, where the association is founded.",
-				QuestionId="dfghrf3456"
+				QuestionId=testQuestionId,
 			};
+
+
+			this.answersService = new AnswersService(context);
 
 			bool actualResult = await this.answersService.CreateAnswer(answerServiceModel);
 			Assert.True(actualResult, errorMessagePrefix);
@@ -75,7 +77,7 @@ namespace CDGBulgariaTests.Service
 			await SeedData(context);
 			this.answersService = new AnswersService(context);
 
-			List<AnswerServiceModel> expectedResults = GetInitialData().Where(a => a.QuestionId == "trtsjjsch567jscj").To<AnswerServiceModel>().ToList();
+			List<AnswerServiceModel> expectedResults = context.Answers.Where(a => a.QuestionId == "trtsjjsch567jscj").To<AnswerServiceModel>().ToList();
 			List<AnswerServiceModel> actualResults = this.answersService.GetAllAnswersForAQuestionById("trtsjjsch567jscj")
 				.To<AnswerServiceModel>()
 				.ToList();
@@ -93,7 +95,9 @@ namespace CDGBulgariaTests.Service
 			}
 		}
 
-			[Fact]
+		
+
+		[Fact]
 		public async Task GetAllAnswersForAQuestionById_WithNonExistentQuestionId_ShouldReturnZeroCount()
 		{
 			string errorMessagePrefix = "AnswersService Method GetAllAnswersForAQuestionById() does not work properly.";

@@ -3,33 +3,32 @@
 @{
 	ViewData["Title"] = "All";
 	Layout = "~/Views/Shared/_Layout.cshtml";
-	var answerList= this.Model.ToList();
+	var answerList = this.Model.ToList();
 }
 
 <hr class="hr-2 bg-primary">
-@if (answerList.Count>0)
-	{
-<table class="table">
-	<thead>
-		<tr class="row text-primary text-center text-white">
-			<th class="col-md-12 h4">See here all answers to this question:</th>
-		</tr>
-	</thead>
-	<tbody>
-		@for (int i = 0; i < answerList.Count; i++)
-		{
+@if (answerList.Count > 0)
+{
+	<table class="table">
+		<thead>
+			<tr class="row text-primary text-center text-white">
+				<th class="col-md-12 h4">See here all answers to this question:</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (int i = 0; i < answerList.Count; i++)
+			{
 
 			<tr class="row text-center font-weight-bold bg-primary">
-				<td class="col-md-12 h5"><h5 class="text-dark text-left">@(i + 1).@answerList[i].Content</h5></td>
+				<td class="col-md-11 h5"><h5 class="text-dark text-left">@(i + 1).@answerList[i].Content</h5></td>
 			</tr>
-
-		}
-	</tbody>
-</table>
-	}
+				}
+				</tbody>
+	</table>
+}
 else
-	{
-      <h5 class="text-primary text-center">Sorry. There are'nt still answers for this question.</h5>     
-	}
+{
+	<h5 class="text-primary text-center">Sorry. There are'nt still answers for this question.</h5>
+}
 
 <hr class="hr-2 bg-primary">

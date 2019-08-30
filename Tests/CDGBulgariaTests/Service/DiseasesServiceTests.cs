@@ -3,6 +3,7 @@ using CDGBulgaria.Data.Models;
 using CDGBulgaria.Services;
 using CDGBulgaria.Services.Contracts;
 using CDGBulgaria.Services.Mapping;
+using CDGBulgaria.Services.Models;
 using CDGBulgariaTests.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,11 +29,11 @@ namespace CDGBulgariaTests.Service
 			return new List<CDGDisease> {
 				new CDGDisease {
 					Name=" MPMM2",
-					Description="Very dangerous disease"
+					Description="Very dangerous disease",
 				  },
 				new CDGDisease {
 					Name=" MPMD2",
-					Description="A new kind of disease"
+					Description="A new kind of disease",
 				  },
 			};
 		}
@@ -102,7 +103,7 @@ namespace CDGBulgariaTests.Service
 			CDGDiseaseServiceModel diseaseServiceModel = new CDGDiseaseServiceModel()
 			{
 				Name = "PMM3",
-				Description = "The next disease from this row of diseases"
+				Description = "The next disease from this row of diseases",
 			};
 
 			bool actualResult = await this.diseasesService.CreateDisease(diseaseServiceModel);
@@ -123,7 +124,7 @@ namespace CDGBulgariaTests.Service
 
 			this.diseasesService = new DiseasesService(context);
 
-			CDGDiseaseServiceModel actualResult = await this.diseasesService.GetCDGDiseaseById(12);
+			CDGDiseaseServiceModel actualResult = await this.diseasesService.GetCDGDiseaseById(1000);
 
 			Assert.True(actualResult == null, errorMessagePrefix);
 
@@ -190,11 +191,11 @@ namespace CDGBulgariaTests.Service
 
 			await this.diseasesService.Edit(expectedData.Id, expectedData);
 
-			await Assert.ThrowsAsync<ArgumentNullException>(() => this.diseasesService.Edit(205, expectedData));
+			await Assert.ThrowsAsync<ArgumentNullException>(() => this.diseasesService.Edit(1000, expectedData));
 		}
 
 		[Fact]
-		public async Task Delete_WithCorrectData_ShouldPassSuccesfully()
+		public async Task Delete_WithCorrectData_ShouldPassSuccessfully()
 		{
 
 			string errorMessagePrefix = "DiseasesService Method Delete() does not work properly.";

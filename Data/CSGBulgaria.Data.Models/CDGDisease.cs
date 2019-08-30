@@ -17,6 +17,5 @@ namespace CDGBulgaria.Data.Models
 		[Required]
 		public string Description { get; set; }
 
-		
 	}
 }

@@ -46,6 +46,7 @@ namespace CDGBulgaria.Services
 			return result > 0;
 		}
 
+		
 		public IQueryable<AnswerServiceModel> GetAllAnswersForAQuestionById(string id)
 		{
 			var answersForAQuestion = this.context.Answers.Include(a => a.Question).Where(a => a.QuestionId == id)
@@ -54,5 +55,7 @@ namespace CDGBulgaria.Services
 			return answersForAQuestion;
 
 		}
+
+		
 	}
 }

@@ -23,8 +23,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		{
 			this.diseasesService = diseasesService;
 		}
-
-		
+			
 		[Authorize]
 		[HttpGet]
 		public async Task<IActionResult> Create()
@@ -38,9 +37,9 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 		{
 			if (!this.ModelState.IsValid)
 			{
+
 				return this.View();
 			}
-			
 
 			CDGDiseaseServiceModel cdgDiseaseServiceModel = cdgDiseaseCreateInputModel.To<CDGDiseaseServiceModel>();
 			await this.diseasesService.CreateDisease(cdgDiseaseServiceModel);
@@ -58,9 +57,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				return this.Redirect("/");
 				throw new ArgumentNullException(nameof(cdgDiseaseEditInputModel));
 			}
-
 			return this.View(cdgDiseaseEditInputModel);
-
 		}
 
 		[HttpPost(Name = "Edit")]
@@ -69,14 +66,14 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 			if (!this.ModelState.IsValid)
 			{
-		        return this.View(diseaseEditInputModel);
+				return this.View(diseaseEditInputModel);
 			}
 
 			CDGDiseaseServiceModel diseaseServiceModel = diseaseEditInputModel.To<CDGDiseaseServiceModel>();
 
 			await this.diseasesService.Edit(id, diseaseServiceModel);
 
-			return this.Redirect("/");
+			return this.Redirect("/Diseases/All");
 		}
 
 		[HttpGet(Name = "Delete")]
@@ -90,7 +87,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 				return this.Redirect("/");
 				throw new ArgumentNullException(nameof(cdgDiseaseDeleteViewModel));
 			}
-			
+
 			return this.View(cdgDiseaseDeleteViewModel);
 		}
 

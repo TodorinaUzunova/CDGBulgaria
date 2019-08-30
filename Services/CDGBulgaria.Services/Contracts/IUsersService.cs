@@ -12,5 +12,7 @@ namespace CDGBulgaria.Services.Contracts
 		bool CreateDoctor();
 
 		int GetAllUsersCount();
+
+		IQueryable<CDGUserServiceModel> GetAllUsersByFullName();
 	}
 }

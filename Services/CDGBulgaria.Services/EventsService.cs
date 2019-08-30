@@ -45,7 +45,7 @@ namespace CDGBulgaria.Services
 					 Start=ev.Start,
 					 Venue=ev.Venue,
 					 MoreInfo=ev.MoreInfo
-				 });
+				 }).OrderBy(ev=>ev.Start);
 
 			return allEvents;
 		}

@@ -60,12 +60,11 @@
 								</a>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 									<a class="dropdown-item text-info" href="/Diseases/About">What Is CDG-Disease?</a>
+									<a class="dropdown-item text-danger" href="/Diseases/Therapies">CDGDisease-Therapies</a>
 									<a class="dropdown-item text-info" href="/Diseases/Info">CDG-TYPES</a>
-									<a class="dropdown-item text-info" href="/Diseases/Therapies">CDGDisease-Therapies</a>
 									<a class="dropdown-item text-danger" href="/Diseases/All">All CDG-Diseases</a>
 									@if (this.User.IsInRole("Admin"))
 									{
-		
 										<a class="dropdown-item text-info" asp-area="Administration" asp-controller="Diseases" asp-action="Create">CDGDisease-Add</a>
 									}
 								</div>
@@ -208,7 +207,7 @@
 		<hr class="hr-2 bg-primary mx-auto">
 		<div class="d-flex justify-content-sm-between">
 			<div class="image">
-				<img class="img-thumbnail cdg-image" src="~/images/JackyChan.jpg" alt="cdg-disease" title="jackie-chan-helping-to-fight-pmm2-cdg" />
+				<img class="img-thumbnail cdg-image" src="~/images/JackyChan.jpg" alt="cdg-disease1" title="jackie-chan-helping-to-fight-pmm2-cdg" />
 				<p id="JackyChan-img" class="text-dark text-center">Jackie Chan Helping To Fight PMM2-CDG</p>
 			</div>
 			<div class="image">

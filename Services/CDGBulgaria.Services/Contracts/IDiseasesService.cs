@@ -12,6 +12,7 @@ namespace CDGBulgaria.Services.Contracts
 
 		Task<bool> CreateDisease(CDGDiseaseServiceModel cdgDiseaseServiceModel);
 
+
 		IQueryable<CDGDiseaseServiceModel> GetAll();
 
 		Task<CDGDiseaseServiceModel> GetCDGDiseaseById(int id);

@@ -52,7 +52,7 @@ namespace CDGBulgaria.Web.Areas.Administration.Controllers
 
 				this.ViewData["questions"] = allQuestions.Select(question=>new AnswerCreateQuestionViewModel
 				{
-					//Id = question.Id,
+					Id = question.Id,
 					Content =question.Content,
 				});
 				return this.View(answerCreateInputModel);

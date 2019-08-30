@@ -60,7 +60,7 @@ namespace CDGBulgariaTests.Service
 
 			List<QuestionServiceModel> actualResults = await this.questionsService.GetAllQuestions().ToListAsync();
 
-			List<QuestionServiceModel> expectedResults = GetInitialData().To<QuestionServiceModel>().ToList();
+			List<QuestionServiceModel> expectedResults = context.Questions.To<QuestionServiceModel>().ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{
@@ -95,15 +95,15 @@ namespace CDGBulgariaTests.Service
 			string errorMessagePrefix = "QuestionsService Method CreateQuestion() does not work properly.";
 
 			var context = CDGBulgariaInmemoryFactory.InitializeContext();
-			this.questionsService = new QuestionsService(context);
-
+		
 		 QuestionServiceModel questionModel= new QuestionServiceModel()
 			{
-				Content = "Are there really found medicines for this desease?",
-				AuthorId= "trahjgtss123",
+				Content = "Are there really found medicines for this disease?",
+				AuthorId=  "trahjgtss123",
 				CreatedOn= DateTime.Parse("10/07/2019 10:30"),
 			};
-			
+
+			this.questionsService = new QuestionsService(context);
 			bool actualResult = await this.questionsService.Create(questionModel);
 
 			Assert.True(actualResult, errorMessagePrefix);

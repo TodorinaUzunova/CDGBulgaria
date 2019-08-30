@@ -95,8 +95,8 @@ namespace CDGBulgaria.Services
 			{
 				case AtoZAuthorNameOrderCriteria: return this.GetAllArticlesByAuthorNameAscending().To<ArticleServiceModel>();
 				case ZtoAAuthorNameOrderCriteria: return this.GetAllArticlesByAuthorNameDescending().To<ArticleServiceModel>();
-				case OldestToNewestDateOrderCriteria: return this.GetAllArticlesByDateCreatedOnDescending().To<ArticleServiceModel>();
-				case NewestToOldestDateOrderCriteria: return this.GetAllArticlesByDateCreatedOnAscending().To<ArticleServiceModel>();
+				case OldestToNewestDateOrderCriteria: return this.GetAllArticlesByDateCreatedOnAscending().To<ArticleServiceModel>();
+				case NewestToOldestDateOrderCriteria: return this.GetAllArticlesByDateCreatedOnDescending().To<ArticleServiceModel>();
 			}
 
 			return this.context.Articles.To<ArticleServiceModel>();
@@ -114,12 +114,12 @@ namespace CDGBulgaria.Services
 
 		private IQueryable<Article> GetAllArticlesByDateCreatedOnAscending()
 		{
-			return this.context.Articles.OrderByDescending(article => article.CreatedOn);
+			return this.context.Articles.OrderBy(article => article.CreatedOn);
 		}
 
 		private IQueryable<Article> GetAllArticlesByDateCreatedOnDescending()
 		{
-			return this.context.Articles.OrderBy(article => article.CreatedOn);
+			return this.context.Articles.OrderByDescending(article => article.CreatedOn);
 		}
 
 		public IEnumerable<string> GetAllArticlesAuthorsFullnames()

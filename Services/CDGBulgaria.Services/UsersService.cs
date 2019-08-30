@@ -24,7 +24,7 @@ namespace CDGBulgaria.Services
 
 		public IQueryable<CDGUserServiceModel> GetAllUsersByFullName()
 		{
-		  return this.context.Users.Select(u=>u.FullName).To<CDGUserServiceModel>();
+		  return this.context.Users.To<CDGUserServiceModel>();
 		}
 
 		public int GetAllUsersCount()

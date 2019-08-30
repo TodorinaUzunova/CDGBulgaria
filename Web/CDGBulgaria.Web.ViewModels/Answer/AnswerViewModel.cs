@@ -9,7 +9,8 @@ namespace CDGBulgaria.Web.ViewModels.Answer
 {
 	public class AnswerViewModel : IMapFrom<AnswerServiceModel>, IHaveCustomMappings
 	{
-	
+		public string Id  { get; set; }
+
 		public string QuestionId { get; set; }
 
 		public string QuestionContent { get; set; }

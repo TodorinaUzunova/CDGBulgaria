@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AspNetCoreTemplate.Services.Mapping;
+using CDGBulgaria.Services.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +8,7 @@ using System.Text;
 
 namespace CDGBulgaria.Web.InputModels.Fact
 {
-	public class FactCreateInputModel
+	public class FactCreateInputModel:IMapTo<FactServiceModel>
 	{
 		[Required]
 		public int Id { get; set; }

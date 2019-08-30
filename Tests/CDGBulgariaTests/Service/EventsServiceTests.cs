@@ -65,7 +65,7 @@ namespace CDGBulgariaTests.Service
 
 			List<EventServiceModel> actualResults = await this.eventsService.GetAllEvents().ToListAsync();
 
-			List<EventServiceModel> expectedResults = GetInitialData().To<EventServiceModel>().ToList();
+			List<EventServiceModel> expectedResults = GetInitialData().To<EventServiceModel>().OrderBy(ev=>ev.Start).ToList();
 
 			for (int i = 0; i < expectedResults.Count; i++)
 			{

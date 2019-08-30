@@ -29,13 +29,13 @@ namespace CDGBulgaria.Services
 				Description=cdgDiseaseServiceModel.Description,
 				
 			};
+
 			await this.context.CDGDiseases.AddAsync(disease);
 
 			int result = await this.context.SaveChangesAsync();
 			return result > 0;
 		}
 
-		
 
 		public async Task<bool> Delete(int id)
 		{
@@ -54,7 +54,7 @@ namespace CDGBulgaria.Services
 
 		public async Task<bool> Edit(int id, CDGDiseaseServiceModel diseaseServiceModel)
 		{
-	
+		
 
 		    CDGDisease diseaseFromDb = await this.context.CDGDiseases.SingleOrDefaultAsync(d => d.Id == id);
 

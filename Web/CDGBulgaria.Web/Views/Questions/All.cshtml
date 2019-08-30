@@ -15,11 +15,6 @@
 			<th class="col-md-2 h5">Username</th>
 			<th class="col-md-2 h5">Date time</th>
 			<th class="col-md-2 h5">Answers</th>
-			@*@if (this.User.IsInRole("Admin"))
-			{
-				<th class="col-md-1 h5">Action</th>
-			}*@
-
 		</tr>
 	</thead>
 	<tbody>
@@ -36,14 +31,7 @@
 					   class="btn btn-primary btn-lg">Answers</a>
 				</div>
 			</td>
-			@*@if (this.User.IsInRole("Admin"))
-			{
-				<td class="col-md-1 h7">
-						<a href="/Administration/Questions/Delete/@question.Id"
-						   class="btn btn-primary text-danger btn">Delete</a>
-				</td>
-			}*@
-
+			
 		</tr>
 		}
 	</tbody>

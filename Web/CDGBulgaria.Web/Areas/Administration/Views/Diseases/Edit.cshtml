@@ -1,5 +1,4 @@
-﻿@using CDGBulgaria.Web.ViewModels.CDGDisease
-@model CDGBulgaria.Web.InputModels.CDGDisease.CDGDiseaseEditInputModel
+﻿@model CDGBulgaria.Web.InputModels.CDGDisease.CDGDiseaseEditInputModel
 
 @{
 	ViewData["Title"] = "Edit";
@@ -20,7 +19,6 @@
 		<textarea asp-for="Description" class="form-control text-center" placeholder="Description..."></textarea>
 		<span asp-validation-for="Description" class="text-danger"></span>
 	</div>
-	
 	<hr class="hr-2 bg-primary">
 	<div class="form-group text-center">
 		<input type="submit" value="Save" class="btn btn-primary" />
