@@ -12,3 +12,16 @@ hr.hr-2 {
 #JeckyChan-img {
 	background-color: #77807a;
 }
+
+
+.container {
+	margin-top: 20px;
+}
+
+.page {
+	display: none;
+}
+
+.page-active {
+	display: block;
+}

@@ -21,6 +21,7 @@ using CDGBulgaria.Web.ViewModels.Question;
 using CDGBulgaria.Web.InputModels.Question;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI;
+using System;
 
 namespace CDGBulgaria.Web
 {
@@ -67,6 +68,8 @@ namespace CDGBulgaria.Web
 				options.Password.RequireUppercase = false;
 				options.Password.RequiredLength = 3;
 				options.Password.RequiredUniqueChars = 0;
+				options.Lockout.DefaultLockoutTimeSpan = new TimeSpan(1, 0, 0);
+				options.Lockout.MaxFailedAccessAttempts = 5;
 
 				options.User.RequireUniqueEmail = true;
 			});

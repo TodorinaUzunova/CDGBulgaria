@@ -23,7 +23,7 @@ namespace CDGBulgaria.Web.ViewComponents
 
 		public  IViewComponentResult Invoke()
 		{
-			 return this.View(new ArticlesUsersViewComponentViewModel { Users= this.articlesService.GetAllArticlesAuthorsFullnames().Distinct().ToList()});
+			 return this.View(new ArticlesUsersViewComponentViewModel { Users= this.articlesService.GetAllArticlesAuthorsFullnames().ToList()});
 		}
 	}
 

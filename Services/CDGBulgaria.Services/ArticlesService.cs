@@ -124,7 +124,7 @@ namespace CDGBulgaria.Services
 
 		public IEnumerable<string> GetAllArticlesAuthorsFullnames()
 		{
-			return this.context.Articles.Include(ar=>ar.Author).Select(au => au.Author.FullName).ToList();
+			return this.context.Articles.Include(ar=>ar.Author).Select(au => au.Author.FullName).Distinct().ToList();
 		}
 	}
 }
