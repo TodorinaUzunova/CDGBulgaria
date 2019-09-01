@@ -14,14 +14,4 @@ hr.hr-2 {
 }
 
 
-.container {
-	margin-top: 20px;
-}
 
-.page {
-	display: none;
-}
-
-.page-active {
-	display: block;
-}
